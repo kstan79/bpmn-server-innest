@@ -61,10 +61,11 @@ pnpm run start:dev # leave console open
   "categoryCode": "aaa",
   "categoryName": "aaaa", 
   "active": true,
-  "categoryType": "class",  # dont change this
+  "categoryType": "class",  
   "description": ""
 }
 ```
+6. you change categoryCode if you try multiple submit to avoid uniquekey crash (remain categoryType unchange)
 
 
 # Elaborate Issue
