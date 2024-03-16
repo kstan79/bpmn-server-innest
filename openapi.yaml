@@ -1,0 +1,3522 @@
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      operationId: AppController_getHello
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /tenant:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a1
+        - TENANT
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tenant"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tenant"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a1
+  /tenant/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a1
+  /tenant/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Tenant"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a1
+  /tenant/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tenant"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a1
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tenant"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a1
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tenant"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a1
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tenant"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a1
+  /org:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a2
+        - ORG
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Organization"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Organization"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a2
+  /org/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a2
+  /org/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Organization"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a2
+  /org/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Organization"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a2
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Organization"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a2
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Organization"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a2
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Organization"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a2
+  /branch:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a3
+        - BRANCH
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Branch"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Branch"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a3
+  /branch/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a3
+  /branch/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Branch"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a3
+  /branch/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Branch"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a3
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Branch"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a3
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Branch"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a3
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Branch"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a3
+  /perm:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a4
+        - PERM
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Permission"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Permission"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a4
+  /perm/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a4
+  /perm/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Permission"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a4
+  /perm/listuser:
+    get:
+      operationId: runListUser
+      summary: ""
+      parameters: []
+      responses:
+        "200":
+          description: Get current permissionlist lookup user info
+          content:
+            application/json:
+              schema:
+                type: object
+      tags: *a4
+  /perm/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Permission"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a4
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Permission"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a4
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Permission"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a4
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Permission"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a4
+  /autoinc:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a5
+        - AUTOINC
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Autoincreament"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Autoincreament"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a5
+  /autoinc/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a5
+  /autoinc/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Autoincreament"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a5
+  /autoinc/gennextno/{collection}/{field}:
+    get:
+      operationId: runGenerateNextNo
+      summary: ""
+      parameters:
+        - name: collection
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: field
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Get next no and trigger increase nextno
+          content:
+            application/json:
+              schema:
+                type: object
+      tags: *a5
+  /autoinc/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Autoincreament"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a5
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Autoincreament"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a5
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Autoincreament"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a5
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Autoincreament"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a5
+  /docno:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a6
+        - DOCNO
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Docnoformat"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Docnoformat"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a6
+  /docno/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a6
+  /docno/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Docnoformat"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a6
+  /docno/listdocformats/{doctype}:
+    get:
+      operationId: runListDocFormats
+      summary: ""
+      parameters:
+        - name: doctype
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: get list of document format for 1 doctype
+          content:
+            application/json:
+              schema:
+                type: object
+      tags: *a6
+  /docno/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Docnoformat"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a6
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Docnoformat"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a6
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Docnoformat"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a6
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Docnoformat"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a6
+  /cat:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a7
+        - CAT
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a7
+  /cat/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a7
+  /cat/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a7
+  /cat/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a7
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a7
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a7
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a7
+  /cust:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a8
+        - CUST
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a8
+  /cust/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a8
+  /cust/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Customer"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a8
+  /cust/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a8
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a8
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a8
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a8
+  /inv:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a9
+        - INV
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Invoice"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a9
+  /inv/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a9
+  /inv/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Invoice"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a9
+  /inv/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a9
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Invoice"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a9
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Invoice"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a9
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a9
+  /prd:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a10
+        - PRD
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a10
+  /prd/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a10
+  /prd/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a10
+  /prd/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a10
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a10
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a10
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a10
+  /user:
+    get:
+      operationId: runHello
+      summary: ""
+      description: Say hello only
+      parameters: []
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal error
+      tags: &a11
+        - USER
+    post:
+      operationId: runCreate
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "201":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a11
+  /user/autocomplete:
+    post:
+      operationId: autoComplete
+      summary: ""
+      description: retrieve array of {_id, code, name}
+      parameters:
+        - name: keyword
+          required: true
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: Internal error
+      tags: *a11
+  /user/search:
+    post:
+      operationId: runSearch
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiSearchBody"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "400":
+          description: bad request
+        "500":
+          description: internal error
+      tags: *a11
+  /user/{id}:
+    get:
+      operationId: runFindOne
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Founds
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a11
+    put:
+      operationId: runUpdate
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a11
+    patch:
+      operationId: runPatch
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: success
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a11
+    delete:
+      operationId: runDelete
+      summary: ""
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: Document not found
+        "500":
+          description: Internal error
+      tags: *a11
+  /profile:
+    get:
+      operationId: getProfile
+      summary: ""
+      description: Get current user profile
+      parameters: []
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MyProfileApiSchema"
+        "401":
+          description: Undefine profile
+          content:
+            application/json:
+              schema:
+                type: object
+      tags: &a12
+        - PROFILE
+  /profile/session:
+    get:
+      operationId: getSession
+      summary: ""
+      description: Get current user session
+      parameters: []
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/String"
+        "401":
+          description: Expired
+          content:
+            application/json:
+              schema:
+                type: object
+      tags: *a12
+  /profile/tenants:
+    get:
+      operationId: getAllTenants
+      summary: ""
+      description: Get all tenants
+      parameters: []
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/"
+        "401":
+          description: Undefine profile
+          content:
+            application/json:
+              schema:
+                type: object
+      tags: *a12
+  /profile/tenant:
+    post:
+      operationId: createTenant
+      summary: ""
+      description: create new tenant
+      parameters: []
+      requestBody:
+        required: true
+        description: create tenant name
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegTenantApiSchema"
+      responses:
+        "201":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+      tags: *a12
+  /profile/invitation/{id}/{decision}:
+    post:
+      operationId: decideInvitation
+      summary: ""
+      description: accept or reject invitation to tenant
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: decision
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "201":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+      tags: *a12
+  /workflow:
+    get:
+      operationId: getMyUserTask
+      summary: ""
+      description: get all my active user task in this tenant **not yet complete**
+      parameters: []
+      responses:
+        "200":
+          description: usertask id not found, or not in waiting stage
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserTaskApiSchema"
+      tags: &a13
+        - workflow
+  /workflow/actor/{uid}:
+    get:
+      operationId: getActorUserTask
+      summary: ""
+      description: get all my active user task in this tenant **not yet complete**
+      parameters: []
+      responses:
+        "200":
+          description: ""
+      tags: *a13
+  /workflow/invoke-task/{taskId}:
+    post:
+      operationId: invokeWorkflowUserTask
+      summary: ""
+      description: invoke workflow user task
+      parameters:
+        - name: taskId
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: invoke workflow data, like reason and etc
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "200":
+          description: Success
+        "404":
+          description: usertask id not found, or not in waiting stage
+      tags: *a13
+  /workflow/{id}/task/{taskId}:
+    put:
+      operationId: updateWorkflowUserTask
+      summary: ""
+      description: update workflow user task
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: taskId
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: "update user task assignee: string, candidateUsers:string[],
+          candidateGroups:string[]"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserTaskActorsApiSchema"
+      responses:
+        "200":
+          description: ""
+      tags: *a13
+  /workflow/admin/get-all-active-process:
+    get:
+      operationId: getAllActiveProcesses
+      summary: ""
+      description: get all active process in this database (done)
+      parameters: []
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WorkflowProcessApiSchema"
+      tags: *a13
+  /workflow/user-task-fields/{workflowname}/{elementId}:
+    get:
+      operationId: getWorkflowUserTaskFormKey
+      summary: ""
+      description: obtain input fields expected for specific user task
+      parameters:
+        - name: workflowname
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: elementId
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+      tags: *a13
+  /workflow/admin/definition:
+    get:
+      operationId: getWorkflowDefinitions
+      summary: ""
+      description: list all workflow definitions, **not yet complete**
+      parameters: []
+      responses:
+        "200":
+          description: ""
+      tags: *a13
+    post:
+      operationId: newWorkflowDefinitions
+      summary: ""
+      description: create new workflow definitions, **not yet complete**
+      parameters:
+        - name: workflowname
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: bpmn definitions in xml
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        "201":
+          description: ""
+      tags: *a13
+  /workflow/admin/definition/{workflowname}:
+    put:
+      operationId: updateWorkflowDefinition
+      summary: ""
+      description: update new workflow definitions with new bpmn definition file **not
+        yet complete**
+      parameters:
+        - name: workflowname
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: bpmn definition in xml
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: ""
+      tags: *a13
+    get:
+      operationId: readWorkflowDefinition
+      summary: ""
+      description: read workflow process definition and svg **not yet complete**
+      parameters:
+        - name: workflowname
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+      tags: *a13
+    delete:
+      operationId: deleteWorkflowDefinition
+      summary: ""
+      description: delete workflow definitions **not yet complete**
+      parameters:
+        - name: workflowname
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+      tags: *a13
+  /workflow/search-all:
+    post:
+      operationId: searchWorkflowProcesses
+      summary: ""
+      description: search all workflow processes
+      parameters: []
+      requestBody:
+        required: true
+        description: workflow data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SearchWorkflowProcessApiSchema"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WorkflowProcessApiSchema"
+      tags: *a13
+  /workflow/search-active:
+    post:
+      operationId: searchRunningWorkflowProcesses
+      summary: ""
+      description: search running workflow processes
+      parameters: []
+      requestBody:
+        required: true
+        description: workflow data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SearchWorkflowProcessApiSchema"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WorkflowProcessApiSchema"
+      tags: *a13
+  /workflow/{workflowname}:
+    post:
+      operationId: startWorkflow
+      summary: ""
+      description: start new workflow process
+      parameters:
+        - name: workflowname
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: workflow data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Object"
+      responses:
+        "201":
+          description: ""
+      tags: *a13
+  /workflow/{id}:
+    get:
+      operationId: getWorkflowById
+      summary: ""
+      description: get workflow process data and task status
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+      tags: *a13
+    delete:
+      operationId: deleteWorkflowById
+      summary: ""
+      description: delete specific workflow process
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+      tags: *a13
+info:
+  title: SimpleApp Demo1
+  description: Try CRUD
+  contact: {}
+tags: []
+servers: []
+components:
+  securitySchemes:
+    x-org:
+      type: apiKey
+      in: header
+      name: x-org
+      description: "base 64 url encode. example: MC0wLTA/MS0xLTE"
+    oauth2:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: /protocol/openid-connect/auth
+          scopes: {}
+  schemas:
+    Object:
+      type: object
+      properties: {}
+    TenantOwner:
+      type: object
+      properties:
+        _id:
+          type: string
+          default: ""
+        label:
+          type: string
+          default: ""
+        uid:
+          type: string
+          default: ""
+      required:
+        - _id
+        - label
+        - uid
+    Tenant:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        tenantName:
+          type: string
+          default: ""
+        active:
+          type: boolean
+          examples:
+            - true
+          default: true
+        description:
+          type: string
+          default: ""
+        owner:
+          $ref: "#/components/schemas/TenantOwner"
+      required:
+        - tenantId
+        - tenantName
+        - owner
+    ApiSearchBody:
+      type: object
+      properties:
+        filter:
+          type: object
+          examples:
+            - '{"field1":"1"}'
+          default:
+            field1: ok
+            field2: true
+        fields:
+          examples:
+            - '["field1","field2"]'
+          default:
+            - field1
+            - field2
+          type: array
+          items:
+            type: object
+        sorts:
+          examples:
+            - '[[ "field1", "asc" ]]'
+          default:
+            - - field1
+              - asc
+          type: array
+          items:
+            type: object
+      required:
+        - fields
+        - sorts
+    Organization:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        orgCode:
+          type: string
+          default: ""
+        orgName:
+          type: string
+          default: ""
+        active:
+          type: boolean
+          default: true
+        description:
+          type: string
+          format: text
+          default: ""
+        timeZone:
+          type: string
+          examples:
+            - Asia/Kuala_Lumpur
+          default: ""
+        offsetMinute:
+          type: number
+          default: 0
+        currency:
+          type: string
+          default: ""
+        country:
+          type: string
+          default: ""
+      required:
+        - orgId
+        - orgCode
+        - orgName
+    BranchOrganization:
+      type: object
+      properties:
+        _id:
+          type: string
+          default: ""
+        code:
+          type: string
+          default: ""
+        label:
+          type: string
+          default: ""
+        orgId:
+          type: number
+          default: 0
+    Branch:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        branchCode:
+          type: string
+          default: ""
+        branchName:
+          type: string
+          default: ""
+        active:
+          type: boolean
+          default: true
+        description:
+          type: string
+          default: ""
+        organization:
+          $ref: "#/components/schemas/BranchOrganization"
+      required:
+        - organization
+    Permission:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        groups:
+          type: array
+          items:
+            type: string
+        uid:
+          type: string
+          description: sso unique identity, which is keycloak sub
+          default: ""
+        userId:
+          type: string
+          description: primary key from user
+          format: uuid
+          default: ""
+      required:
+        - groups
+    Autoincreament:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        collectionName:
+          type: string
+          default: ""
+        fieldName:
+          type: string
+          default: ""
+        nextNo:
+          type: number
+          default: 0
+      required:
+        - collectionName
+        - fieldName
+        - nextNo
+    DocnoformatBranch:
+      type: object
+      properties:
+        _id:
+          type: string
+          default: ""
+        label:
+          type: string
+          default: ""
+        branchId:
+          type: number
+          default: 0
+    Docnoformat:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        docNoFormatNo:
+          type: string
+          examples:
+            - INV
+          default: ""
+        docNoFormatName:
+          type: string
+          examples:
+            - Invoice Default Format
+          default: ""
+        active:
+          type: boolean
+          examples:
+            - true
+          default: true
+        default:
+          type: boolean
+          examples:
+            - true
+          default: true
+        docNoType:
+          type: string
+          examples:
+            - SI
+            - PI
+          default: ""
+        docNoPattern:
+          type: string
+          description: "{date} format as ISO8601 symbol"
+          examples:
+            - SI{YYMM}-<000>
+            - PI-2023-<0000>
+          default: ""
+        nextNumber:
+          type: number
+          default: 1
+        branch:
+          $ref: "#/components/schemas/DocnoformatBranch"
+      required:
+        - branch
+    Category:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        categoryCode:
+          type: string
+          examples:
+            - TUITION
+          default: ""
+        categoryName:
+          type: string
+          examples:
+            - Tuition Service
+          default: ""
+        active:
+          type: boolean
+          examples:
+            - true
+          default: true
+        categoryType:
+          type: string
+          examples:
+            - class
+          default: ""
+        description:
+          type: string
+          format: text
+          examples:
+            - Maths Tuition primary 1
+          default: ""
+    CustomerDocNoFormat:
+      type: object
+      properties:
+        _id:
+          type: string
+          default: ""
+        label:
+          type: string
+          default: ""
+    Customer:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        customerNo:
+          type: string
+          format: documentno
+          examples:
+            - S0001
+          default: ""
+        customerName:
+          type: string
+          examples:
+            - Customer 1
+          default: ""
+        customerStatus:
+          type: string
+          examples:
+            - unknown
+          default: ""
+        email:
+          type: string
+          default: ""
+        tel:
+          type: string
+          default: ""
+        active:
+          type: boolean
+          examples:
+            - true
+          default: true
+        description:
+          type: string
+          format: text
+          default: ""
+        docNoFormat:
+          $ref: "#/components/schemas/CustomerDocNoFormat"
+      required:
+        - docNoFormat
+    InvoiceCustomer:
+      type: object
+      properties:
+        _id:
+          type: string
+          default: ""
+        label:
+          type: string
+          default: ""
+    InvoiceDetailsProduct:
+      type: object
+      properties:
+        _id:
+          type: string
+          default: ""
+        label:
+          type: string
+          default: ""
+        defaultPrice:
+          type: number
+          default: 0
+    InvoiceDetails:
+      type: object
+      properties:
+        quantity:
+          type: number
+          default: 1
+        unitPrice:
+          type: number
+          default: 0
+        subTotal:
+          type: number
+          default: 0
+        created:
+          type: string
+          description: iso8601 dataempty mean new record
+          default: ""
+        updated:
+          type: string
+          description: iso8601 or empty
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        _id:
+          type: string
+          default: ""
+        product:
+          $ref: "#/components/schemas/InvoiceDetailsProduct"
+      required:
+        - product
+    InvoiceDocNoFormat:
+      type: object
+      properties:
+        _id:
+          type: string
+          default: ""
+        label:
+          type: string
+          default: ""
+    Invoice:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        invoiceNo:
+          type: string
+          format: documentno
+          examples:
+            - SI1111
+          default: ""
+        invoiceDate:
+          type: string
+          format: date
+          default: ""
+        invoiceTitle:
+          type: string
+          examples:
+            - Sales to XYZ
+          default: ""
+        invoiceTotal:
+          type: number
+          default: 0
+        description:
+          type: string
+          format: text
+          examples:
+            - Maths Tuition primary 1
+          default: ""
+        customer:
+          $ref: "#/components/schemas/InvoiceCustomer"
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/InvoiceDetails"
+        docNoFormat:
+          $ref: "#/components/schemas/InvoiceDocNoFormat"
+      required:
+        - customer
+        - details
+        - docNoFormat
+    ProductCategory:
+      type: object
+      properties:
+        _id:
+          type: string
+          default: ""
+        label:
+          type: string
+          default: ""
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        productCode:
+          type: string
+          examples:
+            - BK-MTHP1
+          default: ""
+        productName:
+          type: string
+          examples:
+            - Math Primary 1 Book
+          default: ""
+        defaultPrice:
+          type: number
+          default: 0
+        active:
+          type: boolean
+          default: true
+        description:
+          type: string
+          default: ""
+        tags:
+          type: array
+          items:
+            type: string
+        category:
+          $ref: "#/components/schemas/ProductCategory"
+      required:
+        - tags
+        - category
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+          default: ""
+        created:
+          type: string
+          default: ""
+        updated:
+          type: string
+          default: ""
+        createdBy:
+          type: string
+          default: ""
+        updatedBy:
+          type: string
+          default: ""
+        tenantId:
+          type: number
+          default: 1
+        orgId:
+          type: number
+          default: 1
+        branchId:
+          type: number
+          default: 1
+        uid:
+          type: string
+          default: ""
+        fullName:
+          type: string
+          default: ""
+        email:
+          type: string
+          format: email
+          default: ""
+        active:
+          type: boolean
+          default: true
+        description:
+          type: string
+          default: ""
+        lastActivity:
+          type: string
+          description: capture ISO8601 last api call
+          default: ""
+    MyProfileApiSchemaBranches:
+      type: object
+      properties:
+        _id:
+          type: string
+        tenantId:
+          type: number
+        orgId:
+          type: number
+        branchId:
+          type: number
+        group:
+          type: string
+        xOrg:
+          type: string
+      required:
+        - _id
+        - tenantId
+        - orgId
+        - branchId
+        - group
+        - xOrg
+    MyProfileApiSchemaInvites:
+      type: object
+      properties:
+        _id:
+          type: string
+        email:
+          type: string
+        created:
+          type: string
+      required:
+        - _id
+        - email
+        - created
+    MyProfileApiSchema:
+      type: object
+      properties:
+        _id:
+          type: string
+        tenantId:
+          type: number
+        orgId:
+          type: number
+        branchId:
+          type: number
+        email:
+          type: string
+        uid:
+          type: number
+        fullName:
+          type: number
+        group:
+          type: number
+        roles:
+          type: array
+          items:
+            type: string
+        branches:
+          type: array
+          items:
+            $ref: "#/components/schemas/MyProfileApiSchemaBranches"
+        invites:
+          type: array
+          items:
+            $ref: "#/components/schemas/MyProfileApiSchemaInvites"
+        time:
+          type: string
+      required:
+        - _id
+        - tenantId
+        - orgId
+        - branchId
+        - email
+        - uid
+        - fullName
+        - group
+        - roles
+        - branches
+        - invites
+        - time
+    String:
+      type: object
+      properties: {}
+    RegTenantApiSchema:
+      type: object
+      properties:
+        tenantName:
+          type: string
+          examples:
+            - my company 1
+          default: ""
+      required:
+        - tenantName
+    UserTaskApiSchema:
+      type: object
+      properties:
+        id:
+          type: string
+        taskId:
+          type: string
+        elementId:
+          type: string
+        name:
+          type: string
+        processName:
+          type: string
+        assignee:
+          type: string
+        candidateUsers:
+          type: array
+          items:
+            type: string
+        candidateGroups:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+        vars:
+          type: object
+        startedAt:
+          type: string
+        followUpDate:
+          type: string
+        dueDate:
+          type: string
+        priority:
+          type: string
+        type:
+          type: string
+        userId:
+          type: string
+      required:
+        - id
+        - taskId
+        - elementId
+        - name
+        - processName
+        - assignee
+        - candidateUsers
+        - candidateGroups
+        - data
+        - vars
+        - startedAt
+        - followUpDate
+        - dueDate
+        - priority
+        - type
+        - userId
+    UserTaskActorsApiSchema:
+      type: object
+      properties:
+        assignee:
+          type: string
+        candidateUsers:
+          type: array
+          items:
+            type: string
+        candidateGroups:
+          type: array
+          items:
+            type: string
+      required:
+        - assignee
+        - candidateUsers
+        - candidateGroups
+    WorkflowTaskApiSchema:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        assignee:
+          type: string
+        candidateUsers:
+          type: array
+          items:
+            type: string
+        candidateGroups:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+      required:
+        - id
+        - name
+        - status
+        - assignee
+        - candidateUsers
+        - candidateGroups
+        - type
+    WorkflowProcessApiSchema:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        startedAt:
+          type: string
+        status:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/WorkflowTaskApiSchema"
+      required:
+        - id
+        - name
+        - startedAt
+        - status
+        - items
+    SearchWorkflowProcessApiSchema:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        startedAt:
+          type: string
+        status:
+          type: string
+        items.id:
+          type: string
+        items.name:
+          type: string
+        items.status:
+          type: string
+        items.assignee:
+          type: string
+        items.candidateUsers:
+          type: array
+          items:
+            type: string
+        items.candidateGroups:
+          type: array
+          items:
+            type: string
+        items.type:
+          type: string
+      required:
+        - id
+        - name
+        - startedAt
+        - status
+        - items.id
+        - items.name
+        - items.status
+        - items.assignee
+        - items.candidateUsers
+        - items.candidateGroups
+        - items.type
+security:
+  - x-org: []
+  - oauth2: []
