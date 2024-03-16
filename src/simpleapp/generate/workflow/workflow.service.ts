@@ -326,19 +326,19 @@ export class WorkflowService {
   ) {
     //run as event, it wont have transaction
     appuser.setDBSession(undefined);
-
-    if (!data) data = {};
-
+    
+    if (!data ) data = {}    
+    
     //sometimes data is Mongoose object instead of pure data, need serialize and deserialize to remove that
-    data = JSON.parse(JSON.stringify(data));
-
+    data=JSON.parse(JSON.stringify(data))
+    
     try {
       // console.log('startWorkflow started: ', workflowName);
-
+      
       data.tenantId = appuser.getTenantId();
       data.orgId = appuser.getOrgId();
       data.branchId = appuser.getBranchId();
-
+    
       const result = await this.bpmnServer.engine.start(
         workflowName,
         data,

@@ -4,35 +4,41 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { UserContext } from '../commons/user.context';
-import * as sharelibs from '../sharelibs';
+import { UserContext } from '../commons/user.context'
+import * as sharelibs from '../sharelibs'
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import * as jsonpath from 'jsonpath';
+import * as jsonpath from 'jsonpath'
 import { Model } from 'mongoose';
-import { PermissionJsonSchema } from '../jsonschemas/perm.jsonschema';
+import {PermissionJsonSchema } from '../jsonschemas/perm.jsonschema'
 import { SimpleAppService } from './simpleapp.processor';
 import { IsolationType } from '../types';
-import { DocNumberFormatGenerator } from '../commons/docnogenerator.service';
-import { Permission } from '../types/perm.type';
-import { DefaultPermission } from '../defaults/perm.default';
+import {DocNumberFormatGenerator} from '../commons/docnogenerator.service'
+import {  Permission,  }  from '../types/perm.type';
+import {   DefaultPermission,   } from '../defaults/perm.default'
+
+
 
 @Injectable()
-export class PermissionProcessor extends SimpleAppService<Permission> {
-  protected documentIdentityCode = '';
-  protected documentIdentityLabel = '';
-
-  protected foreignkeys = { user: ['$.userId'] };
-  constructor(mydoc: Model<Permission>) {
-    super('PERM', 'permission', mydoc, IsolationType.org);
-    this.setSchema(PermissionJsonSchema);
-    this.setData(DefaultPermission(crypto.randomUUID()));
+export class PermissionProcessor extends SimpleAppService<Permission>  {
+  protected documentIdentityCode=''
+  protected documentIdentityLabel=''
+  
+  protected foreignkeys = {"user":["$.userId"]}
+    constructor(mydoc: Model<Permission>) {
+    super('PERM','permission',mydoc,IsolationType.org);
+    this.setSchema(PermissionJsonSchema)
+    this.setData(DefaultPermission(crypto.randomUUID()))
+        }
+   
+   reCalculateValue(data:Permission){
+    //console.log('trigger new recalculate')    
+    const jsopbj= new jsonpath['JSONPath']()
+        
   }
 
-  reCalculateValue(data: Permission) {
-    //console.log('trigger new recalculate')
-    const jsopbj = new jsonpath['JSONPath']();
-  }
 
   /***************************** additional execute *****************************************/
+    
+
 }

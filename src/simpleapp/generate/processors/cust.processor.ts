@@ -4,39 +4,42 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { UserContext } from '../commons/user.context';
-import * as sharelibs from '../sharelibs';
+import { UserContext } from '../commons/user.context'
+import * as sharelibs from '../sharelibs'
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import * as jsonpath from 'jsonpath';
+import * as jsonpath from 'jsonpath'
 import { Model } from 'mongoose';
-import { CustomerJsonSchema } from '../jsonschemas/cust.jsonschema';
+import {CustomerJsonSchema } from '../jsonschemas/cust.jsonschema'
 import { SimpleAppService } from './simpleapp.processor';
 import { IsolationType } from '../types';
-import { DocNumberFormatGenerator } from '../commons/docnogenerator.service';
-import { CustomerDocNoFormat, Customer } from '../types/cust.type';
-import {
-  DefaultCustomerDocNoFormat,
-  DefaultCustomer,
-} from '../defaults/cust.default';
+import {DocNumberFormatGenerator} from '../commons/docnogenerator.service'
+import {  CustomerDocNoFormat,  Customer,  }  from '../types/cust.type';
+import {   DefaultCustomerDocNoFormat,    DefaultCustomer,   } from '../defaults/cust.default'
+
+
 
 @Injectable()
-export class CustomerProcessor extends SimpleAppService<Customer> {
-  protected documentIdentityCode = 'customerNo';
-  protected documentIdentityLabel = 'customerName';
-  protected withDocNumberFormat = true;
-
-  protected foreignkeys = { docnoformat: ['$.docNoFormat._id'] };
-  constructor(mydoc: Model<Customer>) {
-    super('CUST', 'customer', mydoc, IsolationType.org);
-    this.setSchema(CustomerJsonSchema);
-    this.setData(DefaultCustomer(crypto.randomUUID()));
+export class CustomerProcessor extends SimpleAppService<Customer>  {
+  protected documentIdentityCode='customerNo'
+  protected documentIdentityLabel='customerName'
+    protected withDocNumberFormat = true
+  
+  protected foreignkeys = {"docnoformat":["$.docNoFormat._id"]}
+    constructor(mydoc: Model<Customer>) {
+    super('CUST','customer',mydoc,IsolationType.org);
+    this.setSchema(CustomerJsonSchema)
+    this.setData(DefaultCustomer(crypto.randomUUID()))
+        }
+   
+   reCalculateValue(data:Customer){
+    //console.log('trigger new recalculate')    
+    const jsopbj= new jsonpath['JSONPath']()
+        
   }
 
-  reCalculateValue(data: Customer) {
-    //console.log('trigger new recalculate')
-    const jsopbj = new jsonpath['JSONPath']();
-  }
 
   /***************************** additional execute *****************************************/
+    
+
 }

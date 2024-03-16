@@ -4,38 +4,44 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { UserContext } from '../commons/user.context';
-import * as sharelibs from '../sharelibs';
+import { UserContext } from '../commons/user.context'
+import * as sharelibs from '../sharelibs'
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import * as jsonpath from 'jsonpath';
+import * as jsonpath from 'jsonpath'
 import { Model } from 'mongoose';
-import { OrganizationJsonSchema } from '../jsonschemas/org.jsonschema';
+import {OrganizationJsonSchema } from '../jsonschemas/org.jsonschema'
 import { SimpleAppService } from './simpleapp.processor';
 import { IsolationType } from '../types';
-import { DocNumberFormatGenerator } from '../commons/docnogenerator.service';
-import { Organization } from '../types/org.type';
-import { DefaultOrganization } from '../defaults/org.default';
+import {DocNumberFormatGenerator} from '../commons/docnogenerator.service'
+import {  Organization,  }  from '../types/org.type';
+import {   DefaultOrganization,   } from '../defaults/org.default'
+
+
 
 @Injectable()
-export class OrganizationProcessor extends SimpleAppService<Organization> {
-  protected documentIdentityCode = 'orgCode';
-  protected documentIdentityLabel = 'orgName';
-
-  protected foreignkeys = {};
-  constructor(mydoc: Model<Organization>) {
-    super('ORG', 'organization', mydoc, IsolationType.tenant);
-    this.setSchema(OrganizationJsonSchema);
-    this.setData(DefaultOrganization(crypto.randomUUID()));
-    this.addAutoCompleteField({
-      orgId: 'orgId',
-    });
+export class OrganizationProcessor extends SimpleAppService<Organization>  {
+  protected documentIdentityCode='orgCode'
+  protected documentIdentityLabel='orgName'
+  
+  protected foreignkeys = {}
+    constructor(mydoc: Model<Organization>) {
+    super('ORG','organization',mydoc,IsolationType.tenant);
+    this.setSchema(OrganizationJsonSchema)
+    this.setData(DefaultOrganization(crypto.randomUUID()))
+        this.addAutoCompleteField({
+                            orgId: 'orgId',
+              })
+        }
+   
+   reCalculateValue(data:Organization){
+    //console.log('trigger new recalculate')    
+    const jsopbj= new jsonpath['JSONPath']()
+        
   }
 
-  reCalculateValue(data: Organization) {
-    //console.log('trigger new recalculate')
-    const jsopbj = new jsonpath['JSONPath']();
-  }
 
   /***************************** additional execute *****************************************/
+    
+
 }

@@ -4,29 +4,40 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { DefaultHooks } from '../types';
+import {DefaultHooks} from  "../types"
 
-export type BranchOrganization = {
-  _id?: string; // {"type":"string","required":false,"default":""}
-  code?: string; // {"type":"string","required":false,"default":""}
-  label?: string; // {"type":"string","required":false,"default":""}
-  orgId?: number; // {"type":"number","required":false,"default":0}
-};
+  
+    export type BranchOrganization = {
+     
+           
+                        _id ?: string;   // {"type":"string","required":false,"default":""}                   
+                        code ?: string;   // {"type":"string","required":false,"default":""}                   
+                        label ?: string;   // {"type":"string","required":false,"default":""}                   
+                        orgId ?: number;   // {"type":"number","required":false,"default":0}              
+  }
+  
+    export type Branch = {
+     
+           
+                        _id ?: string;   // {"type":"string","required":false,"format":"uuid","default":""}                   
+                        created ?: string;   // {"type":"string","required":false,"default":""}                   
+                        updated ?: string;   // {"type":"string","required":false,"default":""}                   
+                        createdBy ?: string;   // {"type":"string","required":false,"default":""}                   
+                        updatedBy ?: string;   // {"type":"string","required":false,"default":""}                   
+                        tenantId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        orgId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        branchId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        branchCode ?: string;   // {"type":"string","required":false,"default":""}                   
+                        branchName ?: string;   // {"type":"string","required":false,"default":""}                   
+                        active ?: boolean;   // {"type":"boolean","required":false,"default":true}                   
+                        description ?: string;   // {"type":"string","required":false,"default":""}                   
+                        organization : BranchOrganization; //child object
+              
+  }
 
-export type Branch = {
-  _id?: string; // {"type":"string","required":false,"format":"uuid","default":""}
-  created?: string; // {"type":"string","required":false,"default":""}
-  updated?: string; // {"type":"string","required":false,"default":""}
-  createdBy?: string; // {"type":"string","required":false,"default":""}
-  updatedBy?: string; // {"type":"string","required":false,"default":""}
-  tenantId?: number; // {"type":"number","required":false,"default":1}
-  orgId?: number; // {"type":"number","required":false,"default":1}
-  branchId?: number; // {"type":"number","required":false,"default":1}
-  branchCode?: string; // {"type":"string","required":false,"default":""}
-  branchName?: string; // {"type":"string","required":false,"default":""}
-  active?: boolean; // {"type":"boolean","required":false,"default":true}
-  description?: string; // {"type":"string","required":false,"default":""}
-  organization: BranchOrganization; //child object
-};
 
-export type BranchHooks = DefaultHooks<Branch> & {};
+
+export type BranchHooks = DefaultHooks<Branch> & {
+  
+  
+}

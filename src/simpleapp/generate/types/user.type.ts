@@ -4,23 +4,31 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { DefaultHooks } from '../types';
+import {DefaultHooks} from  "../types"
 
-export type User = {
-  _id?: string; // {"type":"string","required":false,"format":"uuid","default":""}
-  created?: string; // {"type":"string","required":false,"default":""}
-  updated?: string; // {"type":"string","required":false,"default":""}
-  createdBy?: string; // {"type":"string","required":false,"default":""}
-  updatedBy?: string; // {"type":"string","required":false,"default":""}
-  tenantId?: number; // {"type":"number","required":false,"default":1}
-  orgId?: number; // {"type":"number","required":false,"default":1}
-  branchId?: number; // {"type":"number","required":false,"default":1}
-  uid?: string; // {"type":"string","required":false,"default":""}
-  fullName?: string; // {"type":"string","required":false,"default":""}
-  email?: string; // {"type":"string","required":false,"format":"email","default":""}
-  active?: boolean; // {"type":"boolean","required":false,"default":true}
-  description?: string; // {"type":"string","required":false,"default":""}
-  lastActivity?: string; // {"type":"string","required":false,"description":"capture ISO8601 last api call","default":""}
-};
+  
+    export type User = {
+     
+           
+                        _id ?: string;   // {"type":"string","required":false,"format":"uuid","default":""}                   
+                        created ?: string;   // {"type":"string","required":false,"default":""}                   
+                        updated ?: string;   // {"type":"string","required":false,"default":""}                   
+                        createdBy ?: string;   // {"type":"string","required":false,"default":""}                   
+                        updatedBy ?: string;   // {"type":"string","required":false,"default":""}                   
+                        tenantId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        orgId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        branchId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        uid ?: string;   // {"type":"string","required":false,"default":""}                   
+                        fullName ?: string;   // {"type":"string","required":false,"default":""}                   
+                        email ?: string;   // {"type":"string","required":false,"format":"email","default":""}                   
+                        active ?: boolean;   // {"type":"boolean","required":false,"default":true}                   
+                        description ?: string;   // {"type":"string","required":false,"default":""}                   
+                        lastActivity ?: string;   // {"type":"string","required":false,"description":"capture ISO8601 last api call","default":""}              
+  }
 
-export type UserHooks = DefaultHooks<User> & {};
+
+
+export type UserHooks = DefaultHooks<User> & {
+  
+  
+}

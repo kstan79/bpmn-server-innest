@@ -5,16 +5,16 @@
  * author: Ks Tan
  */
 export type ForeignKey = {
-  _id: string;
-  code?: string;
-  label: string;
-  [key: string]: any;
-};
+    _id: string
+    code?:string
+    label: string
+    [key:string]:any
+  };
 
 export type UserPermission = {
   permId: string;
-  branchId: number;
-  branch: ForeignKey;
-  groups: string[];
-  userId: string;
-};
+  branchId: number
+  branch: ForeignKey
+  groups: string[]
+  userId : string
+}

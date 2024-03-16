@@ -5,35 +5,71 @@
  * Author: Ks Tan
  */
 
-export const DefaultCategory = (uuid: string) => {
-  // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":false,"default":1},"orgId":{"type":"number","required":false,"default":1},"branchId":{"type":"number","required":false,"default":1},"categoryCode":{"type":"string","required":false,"examples":["TUITION"],"default":""},"categoryName":{"type":"string","required":false,"examples":["Tuition Service"],"default":""},"active":{"type":"boolean","required":false,"examples":[true],"default":true},"categoryType":{"type":"string","required":false,"examples":["class"],"default":""},"description":{"type":"string","required":false,"format":"text","examples":["Maths Tuition primary 1"],"default":""}}
-  return {
-    _id: uuid,
-
-    // skip cause already hardcoded
-
-    created: '',
-
-    updated: '',
-
-    createdBy: '',
-
-    updatedBy: '',
-
-    tenantId: 0, //it will override by save handle
-
-    orgId: 0, //it will override by save handle
-
-    branchId: 0, //it will override by save handle
-
-    categoryCode: '',
-
-    categoryName: '',
-
-    active: true,
-
-    categoryType: '',
-
-    description: '',
-  };
-};
+    
+export const DefaultCategory = (uuid:string)=>{
+    // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":false,"default":1},"orgId":{"type":"number","required":false,"default":1},"branchId":{"type":"number","required":false,"default":1},"categoryCode":{"type":"string","required":false,"examples":["TUITION"],"default":""},"categoryName":{"type":"string","required":false,"examples":["Tuition Service"],"default":""},"active":{"type":"boolean","required":false,"examples":[true],"default":true},"categoryType":{"type":"string","required":false,"examples":["class"],"default":""},"description":{"type":"string","required":false,"format":"text","examples":["Maths Tuition primary 1"],"default":""}}        
+        return {
+        _id : uuid,
+              
+                          
+            
+                    // skip cause already hardcoded
+                        
+                          
+            
+           
+            created : '',
+                        
+                          
+            
+           
+            updated : '',
+                        
+                          
+            
+           
+            createdBy : '',
+                        
+                          
+            
+           
+            updatedBy : '',
+                        
+                          
+            
+                      tenantId : 0,//it will override by save handle
+                        
+                          
+            
+                      orgId : 0, //it will override by save handle
+                        
+                          
+            
+                      branchId : 0,  //it will override by save handle
+                        
+                          
+            
+           
+            categoryCode : '',
+                        
+                          
+            
+           
+            categoryName : '',
+                        
+                          
+            
+           
+            active : true,
+                        
+                          
+            
+           
+            categoryType : '',
+                        
+                          
+            
+           
+            description : '',
+                      }
+  } 

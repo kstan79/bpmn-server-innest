@@ -4,40 +4,4 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-export const BranchJsonSchema = {
-  type: 'object',
-  'x-simpleapp-config': {
-    isolationType: 'org',
-    documentType: 'branch',
-    documentName: 'branch',
-    uniqueKey: 'branchCode',
-    uniqueKeys: [['branchId']],
-    documentTitle: 'branchName',
-    additionalAutoCompleteFields: ['branchId'],
-    foreignKeys: { organization: ['$.organization._id'] },
-  },
-  properties: {
-    _id: { type: 'string', format: 'uuid' },
-    created: { type: 'string' },
-    updated: { type: 'string' },
-    createdBy: { type: 'string' },
-    updatedBy: { type: 'string' },
-    tenantId: { type: 'integer', default: 1, minimum: 1 },
-    orgId: { type: 'integer', default: 1, minimum: 1 },
-    branchId: { type: 'integer', default: 1, minimum: 1 },
-    organization: {
-      type: 'object',
-      'x-foreignkey': 'organization',
-      properties: {
-        _id: { type: 'string' },
-        code: { type: 'string' },
-        label: { type: 'string' },
-        orgId: { type: 'integer' },
-      },
-    },
-    branchCode: { type: 'string', minLength: 1 },
-    branchName: { type: 'string', minLength: 1 },
-    active: { type: 'boolean', default: true },
-    description: { type: 'string' },
-  },
-};
+export const BranchJsonSchema = {"type":"object","x-simpleapp-config":{"isolationType":"org","documentType":"branch","documentName":"branch","uniqueKey":"branchCode","uniqueKeys":[["branchId"]],"documentTitle":"branchName","additionalAutoCompleteFields":["branchId"],"foreignKeys":{"organization":["$.organization._id"]}},"properties":{"_id":{"type":"string","format":"uuid"},"created":{"type":"string"},"updated":{"type":"string"},"createdBy":{"type":"string"},"updatedBy":{"type":"string"},"tenantId":{"type":"integer","default":1,"minimum":1},"orgId":{"type":"integer","default":1,"minimum":1},"branchId":{"type":"integer","default":1,"minimum":1},"organization":{"type":"object","x-foreignkey":"organization","properties":{"_id":{"type":"string"},"code":{"type":"string"},"label":{"type":"string"},"orgId":{"type":"integer"}}},"branchCode":{"type":"string","minLength":1},"branchName":{"type":"string","minLength":1},"active":{"type":"boolean","default":true},"description":{"type":"string"}}}

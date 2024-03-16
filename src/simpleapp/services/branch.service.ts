@@ -20,11 +20,9 @@ export { Branch } from '../generate/types';
 @Injectable()
 export class BranchService extends BranchProcessor {
   protected strictIsolation = false;
-  protected hooks: BranchHooks = {
-    beforeCreate: async (appuser: UserContext, data: Branch) =>
-      await this.branchBeforeCreate(appuser, data),
-    afterCreate: async (appuser: UserContext, data: Branch) =>
-      await this.branchAfterCreate(appuser, data),
+  protected hooks: BranchHooks = {        
+    beforeCreate: async (appuser: UserContext, data: Branch) => await this.branchBeforeCreate(appuser,data),
+    afterCreate: async (appuser: UserContext, data: Branch) => await this.branchAfterCreate(appuser,data),
   };
   constructor(
     @InjectModel('Branch') mydoc: Model<Branch>,

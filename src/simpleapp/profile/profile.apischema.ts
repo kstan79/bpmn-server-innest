@@ -5,7 +5,7 @@
  * Author: Ks Tan
  */
 import { ApiProperty } from '@nestjs/swagger';
-import { ProfileUserInvites, ProfileUserBranch } from './profile.types';
+import {ProfileUserInvites,ProfileUserBranch} from './profile.types'
 export class RegTenantApiSchema {
   @ApiProperty({
     type: 'string',
@@ -15,26 +15,26 @@ export class RegTenantApiSchema {
   })
   tenantName: string;
 }
-export class MyProfileApiSchemaBranches {
-  @ApiProperty({ type: 'string' })
+export class MyProfileApiSchemaBranches{
+  @ApiProperty({type: 'string'})
   _id: '1231231';
-  @ApiProperty({ type: 'number' })
+  @ApiProperty({type: 'number'})
   tenantId: 2;
-  @ApiProperty({ type: 'number' })
+  @ApiProperty({type: 'number'})
   orgId: 1;
-  @ApiProperty({ type: 'number' })
+  @ApiProperty({type: 'number'})
   branchId: 1;
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({type: 'string'})
   group: 'cashier';
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({type: 'string'})
   xOrg: 'Mi0xLTE';
 }
-export class MyProfileApiSchemaInvites {
-  @ApiProperty({ type: 'string' })
+export class MyProfileApiSchemaInvites{
+  @ApiProperty({type: 'string'})
   _id: string;
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({type: 'string'})
   email: string;
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({type: 'string'})
   created: string;
   permission: any[];
   // @ApiProperty({type: 'string'})
@@ -51,29 +51,30 @@ export class MyProfileApiSchemaInvites {
   // xOrg: 'Mi0xLTE';
 }
 export class MyProfileApiSchema {
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({type: 'string'})
   _id: string;
-  @ApiProperty({ type: 'number' })
+  @ApiProperty({type: 'number'})
   tenantId: number;
-  @ApiProperty({ type: 'number' })
+  @ApiProperty({type: 'number'})
   'orgId': number;
-  @ApiProperty({ type: 'number' })
+  @ApiProperty({type: 'number'})
   'branchId': number;
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({type: 'string'})
   'email': string;
-  @ApiProperty({ type: 'number' })
+  @ApiProperty({type: 'number'})
   'uid': string;
-  @ApiProperty({ type: 'number' })
+  @ApiProperty({type: 'number'})
   'fullName': string;
-  @ApiProperty({ type: 'number' })
+  @ApiProperty({type: 'number'})
   'group': string;
-  @ApiProperty({ type: ['string'] })
+  @ApiProperty({type: ['string']})
   'roles': string[];
+  
 
-  @ApiProperty({ type: [MyProfileApiSchemaBranches] })
-  'branches': ProfileUserBranch[];
-  @ApiProperty({ type: [MyProfileApiSchemaInvites] })
+  @ApiProperty({type: [MyProfileApiSchemaBranches]})
+  'branches': ProfileUserBranch[]
+  @ApiProperty({type: [MyProfileApiSchemaInvites]})
   'invites': ProfileUserInvites[];
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({type: 'string'})
   'time': string;
 }

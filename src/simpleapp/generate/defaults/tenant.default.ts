@@ -5,46 +5,86 @@
  * Author: Ks Tan
  */
 
-export const DefaultTenantOwner = (uuid: string) => {
-  // {"_id":{"type":"string","required":true,"default":""},"label":{"type":"string","required":true,"default":""},"uid":{"type":"string","required":true,"default":""}}
-  return {
-    _id: uuid,
-
-    // skip cause already hardcoded
-
-    label: '',
-
-    uid: '',
-  };
-};
-
-export const DefaultTenant = (uuid: string) => {
-  // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":true,"default":1},"orgId":{"type":"number","required":false,"default":1},"branchId":{"type":"number","required":false,"default":1},"tenantName":{"type":"string","required":true,"default":""},"active":{"type":"boolean","required":false,"examples":[true],"default":true},"description":{"type":"string","required":false,"default":""},"owner":"TenantOwner"}
-  return {
-    _id: uuid,
-
-    // skip cause already hardcoded
-
-    created: '',
-
-    updated: '',
-
-    createdBy: '',
-
-    updatedBy: '',
-
-    tenantId: 0, //it will override by save handle
-
-    orgId: 0, //it will override by save handle
-
-    branchId: 0, //it will override by save handle
-
-    tenantName: '',
-
-    active: true,
-
-    description: '',
-
-    owner: DefaultTenantOwner(''),
-  };
-};
+    
+export const DefaultTenantOwner = (uuid:string)=>{
+    // {"_id":{"type":"string","required":true,"default":""},"label":{"type":"string","required":true,"default":""},"uid":{"type":"string","required":true,"default":""}}        
+        return {
+        _id : uuid,
+              
+                          
+            
+                    // skip cause already hardcoded
+                        
+                          
+            
+           
+            label : '',
+                        
+                          
+            
+           
+            uid : '',
+                      }
+  } 
+    
+export const DefaultTenant = (uuid:string)=>{
+    // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":true,"default":1},"orgId":{"type":"number","required":false,"default":1},"branchId":{"type":"number","required":false,"default":1},"tenantName":{"type":"string","required":true,"default":""},"active":{"type":"boolean","required":false,"examples":[true],"default":true},"description":{"type":"string","required":false,"default":""},"owner":"TenantOwner"}        
+        return {
+        _id : uuid,
+              
+                          
+            
+                    // skip cause already hardcoded
+                        
+                          
+            
+           
+            created : '',
+                        
+                          
+            
+           
+            updated : '',
+                        
+                          
+            
+           
+            createdBy : '',
+                        
+                          
+            
+           
+            updatedBy : '',
+                        
+                          
+            
+                      tenantId : 0,//it will override by save handle
+                        
+                          
+            
+                      orgId : 0, //it will override by save handle
+                        
+                          
+            
+                      branchId : 0,  //it will override by save handle
+                        
+                          
+            
+           
+            tenantName : '',
+                        
+                          
+            
+           
+            active : true,
+                        
+                          
+            
+           
+            description : '',
+                        
+                          
+            
+                      owner :  DefaultTenantOwner(''),
+                      }
+  } 

@@ -52,4 +52,5 @@ export class PermissionService extends PermissionProcessor {
     // delete result['users'][0]
     return finalresult;
   }
+
 }

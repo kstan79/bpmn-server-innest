@@ -5,49 +5,73 @@
  * Author: Ks Tan
  */
 import { Schema } from 'mongoose';
-import { DocnoformatBranch, Docnoformat } from '../types/docno.type';
+import {  DocnoformatBranch,  Docnoformat,  }  from '../types/docno.type';
 const schemasetting = {
-  _id: { type: 'string', required: true }, //force _id as string
+  
+      
+    
+          _id: {type:'string', required:true},  //force _id as string
+          
+    
+          created: {type: String, required: false},  //field 
+          
+    
+          updated: {type: String, required: false},  //field 
+          
+    
+          createdBy: {type: String, required: false},  //field 
+          
+    
+          updatedBy: {type: String, required: false},  //field 
+          
+    
+          tenantId: {type: Number, required: false},  //field 
+          
+    
+          orgId: {type: Number, required: false},  //field 
+          
+    
+          branchId: {type: Number, required: false},  //field 
+          
+    
+          docNoFormatNo: {type: String, required: true},  //field 
+          
+    
+          docNoFormatName: {type: String, required: true},  //field 
+          
+    
+          active: {type: Boolean, required: false},  //field 
+          
+    
+          default: {type: Boolean, required: false},  //field 
+          
+    
+          docNoType: {type: String, required: false},  //field 
+          
+    
+          docNoPattern: {type: String, required: false},  //field 
+          
+    
+          nextNumber: {type: Number, required: false},  //field 
+          
+    
+          branch: {type: <DocnoformatBranch>{}, required:false},   //object
+      };
 
-  created: { type: String, required: false }, //field
-
-  updated: { type: String, required: false }, //field
-
-  createdBy: { type: String, required: false }, //field
-
-  updatedBy: { type: String, required: false }, //field
-
-  tenantId: { type: Number, required: false }, //field
-
-  orgId: { type: Number, required: false }, //field
-
-  branchId: { type: Number, required: false }, //field
-
-  docNoFormatNo: { type: String, required: true }, //field
-
-  docNoFormatName: { type: String, required: true }, //field
-
-  active: { type: Boolean, required: false }, //field
-
-  default: { type: Boolean, required: false }, //field
-
-  docNoType: { type: String, required: false }, //field
-
-  docNoPattern: { type: String, required: false }, //field
-
-  nextNumber: { type: Number, required: false }, //field
-
-  branch: { type: <DocnoformatBranch>{}, required: false }, //object
-};
-
-export const DocnoformatMongoSchema = new Schema(schemasetting, {
-  collection: 'docnoformat',
-})
-  .pre('save', function (next) {
+export const DocnoformatMongoSchema = new Schema(schemasetting,{collection: 'docnoformat'})
+.pre('save', function(next) {
     this.increment();
     return next();
-  })
+})
 
-  .index({ orgId: 1, docNoFormatNo: 1 }, { unique: true })
+     
+       
+            .index({ 'orgId':1, 'docNoFormatNo': 1 }, { unique: true })
+      
+  
+  
 
-  .index({ 'branch._id': 1 });
+
+  
+          .index({'branch._id':1})
+      

@@ -1,73 +1,66 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# how to use
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
+setup project
+1. setup mongodb cluster with docker
 ```bash
-$ pnpm install
+#create network
+docker network create mongoCluster
+#prepare node1
+docker run -d -p 27017:27017 --name mongo1 --network mongoCluster mongo:6 mongod --replSet myReplicaSet --bind_ip localhost,mongo1
+#prepare node2
+docker run -d  -p 27018:27017 --name mongo2 --network mongoCluster mongo:6 mongod --replSet myReplicaSet --bind_ip localhost,mongo2
+#prepare node3
+docker run -d  -p 27019:27017 --name mongo3 --network mongoCluster mongo:6 mongod --replSet myReplicaSet --bind_ip localhost,mongo3
+
+
+# build cluster
+docker exec -it mongo1 mongosh --eval "rs.initiate({
+ _id: \"myReplicaSet\",
+ members: [
+   {_id: 0, host: \"mongo1\"},
+   {_id: 1, host: \"mongo2\"},
+   {_id: 2, host: \"mongo3\"}
+ ]
+})"
+
+# set mongod1 high priority as primary server
+docker exec -it mongo1 mongosh --eval "cfg = rs.conf()
+cfg.members[0].priority = 50
+cfg.members[1].priority = 1
+cfg.members[2].priority = 1
+rs.reconfig(cfg)"
+
+#check cluster status
+docker exec -it mongo1 mongosh --eval "rs.status()"
+```
+2. append this to /etc/hosts
+```
+127.0.0.1 mongo1 mongo2 mongo3
+````
+3. ```
+ pnpm run start:dev # leave console open
+```
+4. browse to http://localhost:8000/api#/CAT/runCreate
+5. try create below data via `post /cat`:
+```
+{
+  "categoryCode": "aaa",
+  "categoryName": "aaaa", 
+  "active": true,
+  "categoryType": "class",  # dont change this
+  "description": ""
+}
 ```
 
-## Running the app
 
-```bash
-# development
-$ pnpm run start
+# Elaborate Issue
+1. monitor console will see alot of logs, when submit create api
+2. you will notice workflow init via hook `beforeCreate` src/simpleapp/services/cat.service.ts
+3. the startWorkflow will send an event to `event2` package at nestjs framework, then trigger workflow service "startWorkflow()" at `src/simpleapp/generate/workflow/workflow.service.ts`
+4. the bpmnserver instance initiated at `constructor` from `src/simpleapp/generate/workflow/workflow.service.ts`
+5. the config of bpmn at `workflow.config.ts` in same folder
+6. I can't proceed further to hide the logs
 
-# watch mode
-$ pnpm run start:dev
+** if u feel interested on where is the bpmn and executor, you may check:
+  `src/simpleapp/workflows/bpmn` and `src/simpleapp/workflows/listeners`
 
-# production mode
-$ pnpm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).

@@ -34,13 +34,13 @@ beforeAll(async () => {
     .expect(200)
     .then((res) => {
       token = `Bearer ${res.body.access_token}`;
-      //   console.log("tokentokentokentoken",token)
+        //   console.log("tokentokentokentoken",token)
     });
 
   const moduleFixture: TestingModule = await Test.createTestingModule({
     imports: [AppModule],
   }).compile();
-
+  
   app = moduleFixture.createNestApplication();
   await app.init();
 
@@ -55,7 +55,7 @@ beforeAll(async () => {
   //     expect(res.body).toHaveProperty('xOrg');
   //     setNewXorg(res.body.xOrg);
   //   });
-  setNewXorg('MS0xLTE');
+  setNewXorg('MS0xLTE')
 
   //   describe('try create new tenant', () => {
   //     it('/profile/tenant ', async () => {
@@ -76,8 +76,9 @@ afterAll(async () => {
 });
 
 export const getServer = () => {
+    
   //        <==== ADD THESE 2 FUNCTIONS
-  //   return process.env.TEST_SERVER
+//   return process.env.TEST_SERVER
   return app.getHttpServer();
 };
 

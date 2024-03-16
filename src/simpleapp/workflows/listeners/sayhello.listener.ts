@@ -4,14 +4,14 @@
  * last change 2023-09-23
  * Author: Ks Tan
  */
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable,Logger } from "@nestjs/common";
 import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { UserContext } from '../../generate/commons/user.context';
-import { User } from '../../services/user.service';
-import { Permission } from '../../services/perm.service';
-import { SimpleAppListenerService } from './simpleapp.listener';
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { UserContext } from "../../generate/commons/user.context";
+import { User } from "../../services/user.service";
+import { Permission } from "../../services/perm.service";
+import {SimpleAppListenerService} from './simpleapp.listener'
 import {
   WorkflowSettingApiSchema,
   WorkflowDataApiSchema,
@@ -22,25 +22,29 @@ import {
   ServiceTaskData,
   UserTaskData,
   UserTaskEventType,
-  ServiceTaskEventType,
+  ServiceTaskEventType
 } from '../../generate/workflow/workflow.type';
 
-@Injectable()
-export class SayhelloListenerService extends SimpleAppListenerService {
-  logger = new Logger();
-  constructor() {
-    super();
-  }
 
-  /**
-   * Execute ServiceTask event hello1 (start)
-   * bpmn: sayhello, elementId: hello1, taskName: hello1, event: start
-   * documentation: hello1 doc
-   *bbb
-   * @param props
-   */
-  @OnEvent('sayhello.hello1.start')
-  async watch_hello1_start(props: ServiceTaskData) {
-    console.log('Running listener  sayhello.hello1.start', props);
-  }
-}
+@Injectable()
+export class SayhelloListenerService extends SimpleAppListenerService{
+    logger = new Logger()
+    constructor(){      
+        super()             
+    }
+
+                  
+            
+      
+      /**
+      * Execute ServiceTask event hello1 (start)
+      * bpmn: sayhello, elementId: hello1, taskName: hello1, event: start
+      * documentation: hello1 doc
+ *bbb 
+      * @param props
+      */
+      @OnEvent('sayhello.hello1.start')
+      async watch_hello1_start(props:ServiceTaskData){
+        console.log("Running listener  sayhello.hello1.start",props)
+      }
+          }

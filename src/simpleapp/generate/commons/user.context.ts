@@ -39,8 +39,8 @@ import { ClientSession } from 'mongoose';
 export class UserContext {
   protected sessionId: string = crypto.randomUUID();
   protected logger = new Logger();
-  protected uid: string = '-';
-  protected _id: string = '-';
+  protected uid: string = 'any';
+  protected _id: string = 'any';
   protected uname: string = '';
   protected email: string = '';
   protected fullname: string = '';
@@ -141,8 +141,6 @@ export class UserContext {
   setCurrentUserInfo = async (tokenstr: string, xorg) => {
     this.setXorg(xorg);
     if(tokenstr) await this.setUserToken(tokenstr);
-    else return //anonymous
-
   };
 
   /**

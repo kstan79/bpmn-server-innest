@@ -4,20 +4,28 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { DefaultHooks } from '../types';
+import {DefaultHooks} from  "../types"
 
-export type Autoincreament = {
-  _id?: string; // {"type":"string","required":false,"format":"uuid","default":""}
-  created?: string; // {"type":"string","required":false,"default":""}
-  updated?: string; // {"type":"string","required":false,"default":""}
-  createdBy?: string; // {"type":"string","required":false,"default":""}
-  updatedBy?: string; // {"type":"string","required":false,"default":""}
-  tenantId?: number; // {"type":"number","required":false,"default":1}
-  orgId?: number; // {"type":"number","required":false,"default":1}
-  branchId?: number; // {"type":"number","required":false,"default":1}
-  collectionName: string; // {"type":"string","required":true,"default":""}
-  fieldName: string; // {"type":"string","required":true,"default":""}
-  nextNo: number; // {"type":"number","required":true,"default":0}
-};
+  
+    export type Autoincreament = {
+     
+           
+                        _id ?: string;   // {"type":"string","required":false,"format":"uuid","default":""}                   
+                        created ?: string;   // {"type":"string","required":false,"default":""}                   
+                        updated ?: string;   // {"type":"string","required":false,"default":""}                   
+                        createdBy ?: string;   // {"type":"string","required":false,"default":""}                   
+                        updatedBy ?: string;   // {"type":"string","required":false,"default":""}                   
+                        tenantId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        orgId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        branchId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        collectionName : string;   // {"type":"string","required":true,"default":""}                   
+                        fieldName : string;   // {"type":"string","required":true,"default":""}                   
+                        nextNo : number;   // {"type":"number","required":true,"default":0}              
+  }
 
-export type AutoincreamentHooks = DefaultHooks<Autoincreament> & {};
+
+
+export type AutoincreamentHooks = DefaultHooks<Autoincreament> & {
+  
+  
+}

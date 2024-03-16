@@ -9,30 +9,30 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { TenantProcessor } from '../generate/processors/tenant.processor';
-import { Tenant, TenantHooks } from '../generate/types';
+import { Tenant,TenantHooks } from '../generate/types';
 import { AutoincreamentService } from './autoinc.service';
 import { UserContext } from '../generate/commons/user.context';
 export { Tenant } from '../generate/types';
 
 @Injectable()
 export class TenantService extends TenantProcessor {
-  protected hooks: TenantHooks = {
-    beforeCreate: async (appuser: UserContext, data: Tenant) =>
-      await this.tenantBeforeCreate(appuser, data),
+  protected hooks : TenantHooks = {
+    beforeCreate: async (appuser: UserContext, data: Tenant) => await this.tenantBeforeCreate(appuser,data),
   };
   constructor(
     @InjectModel('Tenant') mydoc: Model<Tenant>,
     private increament: AutoincreamentService,
+
   ) {
     super(mydoc);
   }
 
-  async tenantBeforeCreate(appuser: UserContext, data: Tenant) {
-    const searchresult = await this.increament.runGenerateNextNo(
-      appuser,
-      'tenant',
-      'tenantId',
-    );
-    data.tenantId = searchresult.nextno;
-  }
+  async tenantBeforeCreate(appuser:UserContext,data:Tenant){
+     const searchresult = await this.increament.runGenerateNextNo(
+          appuser,
+          'tenant',
+          'tenantId',
+        );
+        data.tenantId = searchresult.nextno;        
+  }    
 }

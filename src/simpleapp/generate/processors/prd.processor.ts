@@ -4,41 +4,44 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { UserContext } from '../commons/user.context';
-import * as sharelibs from '../sharelibs';
+import { UserContext } from '../commons/user.context'
+import * as sharelibs from '../sharelibs'
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import * as jsonpath from 'jsonpath';
+import * as jsonpath from 'jsonpath'
 import { Model } from 'mongoose';
-import { ProductJsonSchema } from '../jsonschemas/prd.jsonschema';
+import {ProductJsonSchema } from '../jsonschemas/prd.jsonschema'
 import { SimpleAppService } from './simpleapp.processor';
 import { IsolationType } from '../types';
-import { DocNumberFormatGenerator } from '../commons/docnogenerator.service';
-import { ProductCategory, Product } from '../types/prd.type';
-import {
-  DefaultProductCategory,
-  DefaultProduct,
-} from '../defaults/prd.default';
+import {DocNumberFormatGenerator} from '../commons/docnogenerator.service'
+import {  ProductCategory,  Product,  }  from '../types/prd.type';
+import {   DefaultProductCategory,    DefaultProduct,   } from '../defaults/prd.default'
+
+
 
 @Injectable()
-export class ProductProcessor extends SimpleAppService<Product> {
-  protected documentIdentityCode = 'productCode';
-  protected documentIdentityLabel = 'productName';
-
-  protected foreignkeys = { category: ['$.category._id'] };
-  constructor(mydoc: Model<Product>) {
-    super('PRD', 'product', mydoc, IsolationType.org);
-    this.setSchema(ProductJsonSchema);
-    this.setData(DefaultProduct(crypto.randomUUID()));
-    this.addAutoCompleteField({
-      defaultPrice: 'defaultPrice',
-    });
+export class ProductProcessor extends SimpleAppService<Product>  {
+  protected documentIdentityCode='productCode'
+  protected documentIdentityLabel='productName'
+  
+  protected foreignkeys = {"category":["$.category._id"]}
+    constructor(mydoc: Model<Product>) {
+    super('PRD','product',mydoc,IsolationType.org);
+    this.setSchema(ProductJsonSchema)
+    this.setData(DefaultProduct(crypto.randomUUID()))
+        this.addAutoCompleteField({
+                            defaultPrice: 'defaultPrice',
+              })
+        }
+   
+   reCalculateValue(data:Product){
+    //console.log('trigger new recalculate')    
+    const jsopbj= new jsonpath['JSONPath']()
+        
   }
 
-  reCalculateValue(data: Product) {
-    //console.log('trigger new recalculate')
-    const jsopbj = new jsonpath['JSONPath']();
-  }
 
   /***************************** additional execute *****************************************/
+    
+
 }

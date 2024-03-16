@@ -9,7 +9,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { AutoincreamentProcessor } from '../generate/processors/autoinc.processor';
 
-import { Autoincreament, AutoincreamentHooks } from '../generate/types';
+import { Autoincreament,AutoincreamentHooks } from '../generate/types';
 import { UserContext } from '../generate/commons/user.context';
 export { Autoincreament } from '../generate/types';
 
@@ -19,6 +19,7 @@ export class AutoincreamentService extends AutoincreamentProcessor {
   constructor(@InjectModel('Autoincreament') mydoc: Model<Autoincreament>) {
     super(mydoc);
   }
+
 
   async runGenerateNextNo(
     appuser: UserContext,

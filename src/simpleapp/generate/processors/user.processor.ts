@@ -4,38 +4,44 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { UserContext } from '../commons/user.context';
-import * as sharelibs from '../sharelibs';
+import { UserContext } from '../commons/user.context'
+import * as sharelibs from '../sharelibs'
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import * as jsonpath from 'jsonpath';
+import * as jsonpath from 'jsonpath'
 import { Model } from 'mongoose';
-import { UserJsonSchema } from '../jsonschemas/user.jsonschema';
+import {UserJsonSchema } from '../jsonschemas/user.jsonschema'
 import { SimpleAppService } from './simpleapp.processor';
 import { IsolationType } from '../types';
-import { DocNumberFormatGenerator } from '../commons/docnogenerator.service';
-import { User } from '../types/user.type';
-import { DefaultUser } from '../defaults/user.default';
+import {DocNumberFormatGenerator} from '../commons/docnogenerator.service'
+import {  User,  }  from '../types/user.type';
+import {   DefaultUser,   } from '../defaults/user.default'
+
+
 
 @Injectable()
-export class UserProcessor extends SimpleAppService<User> {
-  protected documentIdentityCode = 'email';
-  protected documentIdentityLabel = 'fullName';
-
-  protected foreignkeys = {};
-  constructor(mydoc: Model<User>) {
-    super('USER', 'user', mydoc, IsolationType.tenant);
-    this.setSchema(UserJsonSchema);
-    this.setData(DefaultUser(crypto.randomUUID()));
-    this.addAutoCompleteField({
-      uid: 'uid',
-    });
+export class UserProcessor extends SimpleAppService<User>  {
+  protected documentIdentityCode='email'
+  protected documentIdentityLabel='fullName'
+  
+  protected foreignkeys = {}
+    constructor(mydoc: Model<User>) {
+    super('USER','user',mydoc,IsolationType.tenant);
+    this.setSchema(UserJsonSchema)
+    this.setData(DefaultUser(crypto.randomUUID()))
+        this.addAutoCompleteField({
+                            uid: 'uid',
+              })
+        }
+   
+   reCalculateValue(data:User){
+    //console.log('trigger new recalculate')    
+    const jsopbj= new jsonpath['JSONPath']()
+        
   }
 
-  reCalculateValue(data: User) {
-    //console.log('trigger new recalculate')
-    const jsopbj = new jsonpath['JSONPath']();
-  }
 
   /***************************** additional execute *****************************************/
+    
+
 }

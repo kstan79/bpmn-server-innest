@@ -4,35 +4,41 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { UserContext } from '../commons/user.context';
-import * as sharelibs from '../sharelibs';
+import { UserContext } from '../commons/user.context'
+import * as sharelibs from '../sharelibs'
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import * as jsonpath from 'jsonpath';
+import * as jsonpath from 'jsonpath'
 import { Model } from 'mongoose';
-import { TenantJsonSchema } from '../jsonschemas/tenant.jsonschema';
+import {TenantJsonSchema } from '../jsonschemas/tenant.jsonschema'
 import { SimpleAppService } from './simpleapp.processor';
 import { IsolationType } from '../types';
-import { DocNumberFormatGenerator } from '../commons/docnogenerator.service';
-import { TenantOwner, Tenant } from '../types/tenant.type';
-import { DefaultTenantOwner, DefaultTenant } from '../defaults/tenant.default';
+import {DocNumberFormatGenerator} from '../commons/docnogenerator.service'
+import {  TenantOwner,  Tenant,  }  from '../types/tenant.type';
+import {   DefaultTenantOwner,    DefaultTenant,   } from '../defaults/tenant.default'
+
+
 
 @Injectable()
-export class TenantProcessor extends SimpleAppService<Tenant> {
-  protected documentIdentityCode = 'tenantId';
-  protected documentIdentityLabel = 'tenantName';
-
-  protected foreignkeys = { user: ['$.owner._id'] };
-  constructor(mydoc: Model<Tenant>) {
-    super('TENANT', 'tenant', mydoc, IsolationType.none);
-    this.setSchema(TenantJsonSchema);
-    this.setData(DefaultTenant(crypto.randomUUID()));
+export class TenantProcessor extends SimpleAppService<Tenant>  {
+  protected documentIdentityCode='tenantId'
+  protected documentIdentityLabel='tenantName'
+  
+  protected foreignkeys = {"user":["$.owner._id"]}
+    constructor(mydoc: Model<Tenant>) {
+    super('TENANT','tenant',mydoc,IsolationType.none);
+    this.setSchema(TenantJsonSchema)
+    this.setData(DefaultTenant(crypto.randomUUID()))
+        }
+   
+   reCalculateValue(data:Tenant){
+    //console.log('trigger new recalculate')    
+    const jsopbj= new jsonpath['JSONPath']()
+        
   }
 
-  reCalculateValue(data: Tenant) {
-    //console.log('trigger new recalculate')
-    const jsopbj = new jsonpath['JSONPath']();
-  }
 
   /***************************** additional execute *****************************************/
+    
+
 }

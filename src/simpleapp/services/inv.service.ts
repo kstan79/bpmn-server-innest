@@ -18,16 +18,22 @@ import { UserContext } from '../generate/commons/user.context';
 import { InvoiceProcessor } from '../generate/processors/inv.processor';
 //import { Invoice,InvoiceHooks} from '../generate/types';
 import * as types from '../generate/types';
-export { Invoice } from '../generate/types';
+export { Invoice} from '../generate/types';
+
 
 @Injectable()
 export class InvoiceService extends InvoiceProcessor {
-  public hooks: types.InvoiceHooks = {};
-  constructor(@InjectModel('Invoice') mydoc: Model<types.Invoice>) {
-    super(mydoc);
-  }
+     
+   
+      
+  public hooks: types.InvoiceHooks = {}
+    constructor(
+        @InjectModel('Invoice')  mydoc: Model<types.Invoice>
+        ){
+        super(mydoc)
+    }
 
-  /***************************** begin x-document-api definitions *****************************************/
+/***************************** begin x-document-api definitions *****************************************/
 
-  /***************************** end x-document-api definitions *****************************************/
+/***************************** end x-document-api definitions *****************************************/
 }

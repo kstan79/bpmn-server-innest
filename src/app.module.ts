@@ -83,12 +83,7 @@ if(process.env.OAUTH2_CONFIGURL){
     ]),    
       ],
   controllers: [AppController],
-  providers: providers,
-    
-   
-  
-    
-  
+  providers: providers,       
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

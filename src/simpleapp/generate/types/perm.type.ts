@@ -4,21 +4,29 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { DefaultHooks } from '../types';
+import {DefaultHooks} from  "../types"
 
-export type Permission = {
-  _id?: string; // {"type":"string","required":false,"format":"uuid","default":""}
-  created?: string; // {"type":"string","required":false,"default":""}
-  updated?: string; // {"type":"string","required":false,"default":""}
-  createdBy?: string; // {"type":"string","required":false,"default":""}
-  updatedBy?: string; // {"type":"string","required":false,"default":""}
-  tenantId?: number; // {"type":"number","required":false,"default":1}
-  orgId?: number; // {"type":"number","required":false,"default":1}
-  branchId?: number; // {"type":"number","required":false,"default":1}
-  groups: string[]; //array
+  
+    export type Permission = {
+     
+           
+                        _id ?: string;   // {"type":"string","required":false,"format":"uuid","default":""}                   
+                        created ?: string;   // {"type":"string","required":false,"default":""}                   
+                        updated ?: string;   // {"type":"string","required":false,"default":""}                   
+                        createdBy ?: string;   // {"type":"string","required":false,"default":""}                   
+                        updatedBy ?: string;   // {"type":"string","required":false,"default":""}                   
+                        tenantId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        orgId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        branchId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        groups: string[]; //array 
+                   
+                        uid ?: string;   // {"type":"string","required":false,"description":"sso unique identity, which is keycloak sub","default":""}                   
+                        userId ?: string;   // {"type":"string","required":false,"description":"primary key from user","format":"uuid","default":""}              
+  }
 
-  uid?: string; // {"type":"string","required":false,"description":"sso unique identity, which is keycloak sub","default":""}
-  userId?: string; // {"type":"string","required":false,"description":"primary key from user","format":"uuid","default":""}
-};
 
-export type PermissionHooks = DefaultHooks<Permission> & {};
+
+export type PermissionHooks = DefaultHooks<Permission> & {
+  
+  
+}

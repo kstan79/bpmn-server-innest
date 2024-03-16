@@ -67,6 +67,7 @@ export class ProfileController {
     }
   }
 
+
   @Get('session')
   @Roles(Role.Everyone, Role.User)
   @ApiOperation({
@@ -79,15 +80,15 @@ export class ProfileController {
     description: 'Success',
   })
   @ApiResponse({ status: 401, type: Object, description: 'Expired' })
-  async getSession(@AppUser() appuser: UserContext) {
-    const result = await this.profileservice.getSession(appuser);
+  async getSession(@AppUser() appuser: UserContext) {   
+    const result = await this.profileservice.getSession(appuser);    
     if (result) {
       return result;
     } else {
       throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
     }
   }
-
+  
   @Get('/tenants')
   @Roles(Role.Everyone, Role.User)
   @ApiOperation({

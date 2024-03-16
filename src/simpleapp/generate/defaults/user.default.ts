@@ -5,37 +5,76 @@
  * Author: Ks Tan
  */
 
-export const DefaultUser = (uuid: string) => {
-  // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":false,"default":1},"orgId":{"type":"number","required":false,"default":1},"branchId":{"type":"number","required":false,"default":1},"uid":{"type":"string","required":false,"default":""},"fullName":{"type":"string","required":false,"default":""},"email":{"type":"string","required":false,"format":"email","default":""},"active":{"type":"boolean","required":false,"default":true},"description":{"type":"string","required":false,"default":""},"lastActivity":{"type":"string","required":false,"description":"capture ISO8601 last api call","default":""}}
-  return {
-    _id: uuid,
-
-    // skip cause already hardcoded
-
-    created: '',
-
-    updated: '',
-
-    createdBy: '',
-
-    updatedBy: '',
-
-    tenantId: 0, //it will override by save handle
-
-    orgId: 0, //it will override by save handle
-
-    branchId: 0, //it will override by save handle
-
-    uid: '',
-
-    fullName: '',
-
-    email: '',
-
-    active: true,
-
-    description: '',
-
-    lastActivity: '',
-  };
-};
+    
+export const DefaultUser = (uuid:string)=>{
+    // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":false,"default":1},"orgId":{"type":"number","required":false,"default":1},"branchId":{"type":"number","required":false,"default":1},"uid":{"type":"string","required":false,"default":""},"fullName":{"type":"string","required":false,"default":""},"email":{"type":"string","required":false,"format":"email","default":""},"active":{"type":"boolean","required":false,"default":true},"description":{"type":"string","required":false,"default":""},"lastActivity":{"type":"string","required":false,"description":"capture ISO8601 last api call","default":""}}        
+        return {
+        _id : uuid,
+              
+                          
+            
+                    // skip cause already hardcoded
+                        
+                          
+            
+           
+            created : '',
+                        
+                          
+            
+           
+            updated : '',
+                        
+                          
+            
+           
+            createdBy : '',
+                        
+                          
+            
+           
+            updatedBy : '',
+                        
+                          
+            
+                      tenantId : 0,//it will override by save handle
+                        
+                          
+            
+                      orgId : 0, //it will override by save handle
+                        
+                          
+            
+                      branchId : 0,  //it will override by save handle
+                        
+                          
+            
+           
+            uid : '',
+                        
+                          
+            
+           
+            fullName : '',
+                        
+                          
+            
+           
+            email : '',
+                        
+                          
+            
+           
+            active : true,
+                        
+                          
+            
+           
+            description : '',
+                        
+                          
+            
+           
+            lastActivity : '',
+                      }
+  } 

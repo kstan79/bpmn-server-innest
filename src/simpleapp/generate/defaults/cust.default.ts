@@ -5,52 +5,101 @@
  * Author: Ks Tan
  */
 
-export const DefaultCustomerDocNoFormat = (uuid: string) => {
-  // {"_id":{"type":"string","required":false,"default":""},"label":{"type":"string","required":false,"default":""}}
-  return {
-    _id: uuid,
-
-    // skip cause already hardcoded
-
-    label: '',
-  };
-};
-
-export const DefaultCustomer = (uuid: string) => {
-  // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":false,"default":1},"orgId":{"type":"number","required":false,"default":1},"branchId":{"type":"number","required":false,"default":1},"customerNo":{"type":"string","required":false,"format":"documentno","examples":["S0001"],"default":""},"customerName":{"type":"string","required":false,"examples":["Customer 1"],"default":""},"customerStatus":{"type":"string","required":false,"examples":["unknown"],"default":""},"email":{"type":"string","required":false,"default":""},"tel":{"type":"string","required":false,"default":""},"active":{"type":"boolean","required":false,"examples":[true],"default":true},"description":{"type":"string","required":false,"format":"text","default":""},"docNoFormat":"CustomerDocNoFormat"}
-  return {
-    _id: uuid,
-
-    // skip cause already hardcoded
-
-    created: '',
-
-    updated: '',
-
-    createdBy: '',
-
-    updatedBy: '',
-
-    tenantId: 0, //it will override by save handle
-
-    orgId: 0, //it will override by save handle
-
-    branchId: 0, //it will override by save handle
-
-    customerNo: '',
-
-    customerName: '',
-
-    customerStatus: '',
-
-    email: '',
-
-    tel: '',
-
-    active: true,
-
-    description: '',
-
-    docNoFormat: DefaultCustomerDocNoFormat(''),
-  };
-};
+    
+export const DefaultCustomerDocNoFormat = (uuid:string)=>{
+    // {"_id":{"type":"string","required":false,"default":""},"label":{"type":"string","required":false,"default":""}}        
+        return {
+        _id : uuid,
+              
+                          
+            
+                    // skip cause already hardcoded
+                        
+                          
+            
+           
+            label : '',
+                      }
+  } 
+    
+export const DefaultCustomer = (uuid:string)=>{
+    // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":false,"default":1},"orgId":{"type":"number","required":false,"default":1},"branchId":{"type":"number","required":false,"default":1},"customerNo":{"type":"string","required":false,"format":"documentno","examples":["S0001"],"default":""},"customerName":{"type":"string","required":false,"examples":["Customer 1"],"default":""},"customerStatus":{"type":"string","required":false,"examples":["unknown"],"default":""},"email":{"type":"string","required":false,"default":""},"tel":{"type":"string","required":false,"default":""},"active":{"type":"boolean","required":false,"examples":[true],"default":true},"description":{"type":"string","required":false,"format":"text","default":""},"docNoFormat":"CustomerDocNoFormat"}        
+        return {
+        _id : uuid,
+              
+                          
+            
+                    // skip cause already hardcoded
+                        
+                          
+            
+           
+            created : '',
+                        
+                          
+            
+           
+            updated : '',
+                        
+                          
+            
+           
+            createdBy : '',
+                        
+                          
+            
+           
+            updatedBy : '',
+                        
+                          
+            
+                      tenantId : 0,//it will override by save handle
+                        
+                          
+            
+                      orgId : 0, //it will override by save handle
+                        
+                          
+            
+                      branchId : 0,  //it will override by save handle
+                        
+                          
+            
+           
+            customerNo : '',
+                        
+                          
+            
+           
+            customerName : '',
+                        
+                          
+            
+           
+            customerStatus : '',
+                        
+                          
+            
+           
+            email : '',
+                        
+                          
+            
+           
+            tel : '',
+                        
+                          
+            
+           
+            active : true,
+                        
+                          
+            
+           
+            description : '',
+                        
+                          
+            
+                      docNoFormat :  DefaultCustomerDocNoFormat(''),
+                      }
+  } 

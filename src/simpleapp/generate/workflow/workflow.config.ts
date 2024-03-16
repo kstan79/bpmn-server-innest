@@ -66,7 +66,7 @@ export class WorkflowConfig {
       appDelegate: (server: BPMNServer) =>
         _this.workflowdelegate.setServer(server),
       //userService: (server: BPMNServer) =>
-      //_this.workflowUserService.setServer(server),
+        //_this.workflowUserService.setServer(server),
       dataStore: function (server: BPMNServer) {
         return new MyDataStore(server);
       },

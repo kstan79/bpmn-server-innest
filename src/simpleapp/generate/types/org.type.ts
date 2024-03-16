@@ -4,25 +4,33 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { DefaultHooks } from '../types';
+import {DefaultHooks} from  "../types"
 
-export type Organization = {
-  _id?: string; // {"type":"string","required":false,"format":"uuid","default":""}
-  created?: string; // {"type":"string","required":false,"default":""}
-  updated?: string; // {"type":"string","required":false,"default":""}
-  createdBy?: string; // {"type":"string","required":false,"default":""}
-  updatedBy?: string; // {"type":"string","required":false,"default":""}
-  tenantId?: number; // {"type":"number","required":false,"default":1}
-  orgId: number; // {"type":"number","required":true,"default":1}
-  branchId?: number; // {"type":"number","required":false,"default":1}
-  orgCode: string; // {"type":"string","required":true,"default":""}
-  orgName: string; // {"type":"string","required":true,"default":""}
-  active?: boolean; // {"type":"boolean","required":false,"default":true}
-  description?: string; // {"type":"string","required":false,"format":"text","default":""}
-  timeZone?: string; // {"type":"string","required":false,"examples":["Asia/Kuala_Lumpur"],"default":""}
-  offsetMinute?: number; // {"type":"number","required":false,"default":0}
-  currency?: string; // {"type":"string","required":false,"default":""}
-  country?: string; // {"type":"string","required":false,"default":""}
-};
+  
+    export type Organization = {
+     
+           
+                        _id ?: string;   // {"type":"string","required":false,"format":"uuid","default":""}                   
+                        created ?: string;   // {"type":"string","required":false,"default":""}                   
+                        updated ?: string;   // {"type":"string","required":false,"default":""}                   
+                        createdBy ?: string;   // {"type":"string","required":false,"default":""}                   
+                        updatedBy ?: string;   // {"type":"string","required":false,"default":""}                   
+                        tenantId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        orgId : number;   // {"type":"number","required":true,"default":1}                   
+                        branchId ?: number;   // {"type":"number","required":false,"default":1}                   
+                        orgCode : string;   // {"type":"string","required":true,"default":""}                   
+                        orgName : string;   // {"type":"string","required":true,"default":""}                   
+                        active ?: boolean;   // {"type":"boolean","required":false,"default":true}                   
+                        description ?: string;   // {"type":"string","required":false,"format":"text","default":""}                   
+                        timeZone ?: string;   // {"type":"string","required":false,"examples":["Asia/Kuala_Lumpur"],"default":""}                   
+                        offsetMinute ?: number;   // {"type":"number","required":false,"default":0}                   
+                        currency ?: string;   // {"type":"string","required":false,"default":""}                   
+                        country ?: string;   // {"type":"string","required":false,"default":""}              
+  }
 
-export type OrganizationHooks = DefaultHooks<Organization> & {};
+
+
+export type OrganizationHooks = DefaultHooks<Organization> & {
+  
+  
+}

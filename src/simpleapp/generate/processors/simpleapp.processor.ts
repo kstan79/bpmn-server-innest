@@ -562,7 +562,7 @@ export class SimpleAppService<T extends { _id?: string }> {
       appuser.addUpdatedRecordId(this.documentName, data._id);
       if (this.hooks.afterUpdate)
         await this.hooks.afterUpdate(appuser, id, result);
-      return result; // await this.findById(appuser, id);
+      return  result // await this.findById(appuser, id);
     } catch (err) {
       this.logger.error(err);
       throw new InternalServerErrorException(err.message);
@@ -615,7 +615,7 @@ export class SimpleAppService<T extends { _id?: string }> {
 
       if (this.hooks.afterUpdate)
         await this.hooks.afterUpdate(appuser, id, result);
-      return result; //await this.findById(appuser, id);
+      return result //await this.findById(appuser, id);
     } catch (err) {
       throw new InternalServerErrorException(err.message);
     }

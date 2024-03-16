@@ -5,8 +5,9 @@
  * Author: Ks Tan
  */
 
-export type WorkflowCatalogue = {
-  sayhello: any;
-};
+ export type WorkflowCatalogue = {
+              
+        sayhello:any,
+    }
 
-export type WorkflowName = keyof WorkflowCatalogue;
+export type WorkflowName = keyof WorkflowCatalogue

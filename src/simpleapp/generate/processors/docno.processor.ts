@@ -4,41 +4,44 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { UserContext } from '../commons/user.context';
-import * as sharelibs from '../sharelibs';
+import { UserContext } from '../commons/user.context'
+import * as sharelibs from '../sharelibs'
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import * as jsonpath from 'jsonpath';
+import * as jsonpath from 'jsonpath'
 import { Model } from 'mongoose';
-import { DocnoformatJsonSchema } from '../jsonschemas/docno.jsonschema';
+import {DocnoformatJsonSchema } from '../jsonschemas/docno.jsonschema'
 import { SimpleAppService } from './simpleapp.processor';
 import { IsolationType } from '../types';
-import { DocNumberFormatGenerator } from '../commons/docnogenerator.service';
-import { DocnoformatBranch, Docnoformat } from '../types/docno.type';
-import {
-  DefaultDocnoformatBranch,
-  DefaultDocnoformat,
-} from '../defaults/docno.default';
+import {DocNumberFormatGenerator} from '../commons/docnogenerator.service'
+import {  DocnoformatBranch,  Docnoformat,  }  from '../types/docno.type';
+import {   DefaultDocnoformatBranch,    DefaultDocnoformat,   } from '../defaults/docno.default'
+
+
 
 @Injectable()
-export class DocnoformatProcessor extends SimpleAppService<Docnoformat> {
-  protected documentIdentityCode = 'docNoFormatNo';
-  protected documentIdentityLabel = 'docNoFormatName';
-
-  protected foreignkeys = { branch: ['$.branch._id'] };
-  constructor(mydoc: Model<Docnoformat>) {
-    super('DOCNO', 'docnoformat', mydoc, IsolationType.org);
-    this.setSchema(DocnoformatJsonSchema);
-    this.setData(DefaultDocnoformat(crypto.randomUUID()));
-    this.addAutoCompleteField({
-      default: 'default',
-    });
+export class DocnoformatProcessor extends SimpleAppService<Docnoformat>  {
+  protected documentIdentityCode='docNoFormatNo'
+  protected documentIdentityLabel='docNoFormatName'
+  
+  protected foreignkeys = {"branch":["$.branch._id"]}
+    constructor(mydoc: Model<Docnoformat>) {
+    super('DOCNO','docnoformat',mydoc,IsolationType.org);
+    this.setSchema(DocnoformatJsonSchema)
+    this.setData(DefaultDocnoformat(crypto.randomUUID()))
+        this.addAutoCompleteField({
+                            default: 'default',
+              })
+        }
+   
+   reCalculateValue(data:Docnoformat){
+    //console.log('trigger new recalculate')    
+    const jsopbj= new jsonpath['JSONPath']()
+        
   }
 
-  reCalculateValue(data: Docnoformat) {
-    //console.log('trigger new recalculate')
-    const jsopbj = new jsonpath['JSONPath']();
-  }
 
   /***************************** additional execute *****************************************/
+    
+
 }

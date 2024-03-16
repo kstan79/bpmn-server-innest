@@ -8,7 +8,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { OrganizationProcessor } from '../generate/processors/org.processor';
-import { Organization, OrganizationHooks } from '../generate/types';
+import { Organization,OrganizationHooks } from '../generate/types';
 export { Organization } from '../generate/types';
 import { AutoincreamentService } from './autoinc.service';
 import { UserContext } from '../generate/commons/user.context';
@@ -16,9 +16,8 @@ import { UserContext } from '../generate/commons/user.context';
 @Injectable()
 export class OrganizationService extends OrganizationProcessor {
   protected strictIsolation = false;
-  protected hooks: OrganizationHooks = {
-    beforeCreate: async (appuser: UserContext, data: Organization) =>
-      await this.orgBeforeCreate(appuser, data),
+  protected hooks : OrganizationHooks = {
+    beforeCreate: async (appuser: UserContext, data: Organization) => await this.orgBeforeCreate(appuser,data),
   };
   constructor(
     @InjectModel('Organization') mydoc: Model<Organization>,
@@ -27,12 +26,12 @@ export class OrganizationService extends OrganizationProcessor {
     super(mydoc);
   }
 
-  async orgBeforeCreate(appuser: UserContext, data: Organization) {
+  async orgBeforeCreate(appuser:UserContext,data:Organization){
     const searchresult = await this.increament.runGenerateNextNo(
-      appuser,
-      'organization',
-      'orgId',
-    );
-    data.orgId = searchresult.nextno;
-  }
+          appuser,
+          'organization',
+          'orgId',
+        );
+        data.orgId = searchresult.nextno;
+  }  
 }

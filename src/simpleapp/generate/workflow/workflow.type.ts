@@ -63,11 +63,11 @@ export type UserTaskType = {
 export type UserTaskEventType = 'start' | 'wait' | 'invoked' | 'end' | 'assign';
 export type UserTaskData = {
   workflowName: string;
-  eventType: UserTaskEventType; //assign = modify properties but not change state
+  eventType: UserTaskEventType //assign = modify properties but not change state
   elementType: 'bpmn:UserTask';
   elementId: string;
   elementName: string;
-  vars: any;
+  vars:any
   elementProps: {
     startedAt: string;
     assignee?: string;
@@ -77,7 +77,7 @@ export type UserTaskData = {
     followUpDate?: string;
     priority?: string;
     formKey?: string;
-  };
+  };  
   data: any;
   options: WorkflowOptions;
 };
@@ -93,6 +93,6 @@ export type ServiceTaskData = {
   elementId: string;
   elementName: string;
   data: any;
-  vars: any;
+  vars:any
   options: WorkflowOptions;
 };

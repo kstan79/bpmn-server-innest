@@ -5,49 +5,73 @@
  * Author: Ks Tan
  */
 import { Schema } from 'mongoose';
-import { CustomerDocNoFormat, Customer } from '../types/cust.type';
+import {  CustomerDocNoFormat,  Customer,  }  from '../types/cust.type';
 const schemasetting = {
-  _id: { type: 'string', required: true }, //force _id as string
+  
+      
+    
+          _id: {type:'string', required:true},  //force _id as string
+          
+    
+          created: {type: String, required: false},  //field 
+          
+    
+          updated: {type: String, required: false},  //field 
+          
+    
+          createdBy: {type: String, required: false},  //field 
+          
+    
+          updatedBy: {type: String, required: false},  //field 
+          
+    
+          tenantId: {type: Number, required: false},  //field 
+          
+    
+          orgId: {type: Number, required: false},  //field 
+          
+    
+          branchId: {type: Number, required: false},  //field 
+          
+    
+          customerNo: {type: String, required: true},  //field 
+          
+    
+          customerName: {type: String, required: true},  //field 
+          
+    
+          customerStatus: {type: String, required: false},  //field 
+          
+    
+          email: {type: String, required: false},  //field 
+          
+    
+          tel: {type: String, required: false},  //field 
+          
+    
+          active: {type: Boolean, required: false},  //field 
+          
+    
+          description: {type: String, required: false},  //field 
+          
+    
+          docNoFormat: {type: <CustomerDocNoFormat>{}, required:false},   //object
+      };
 
-  created: { type: String, required: false }, //field
-
-  updated: { type: String, required: false }, //field
-
-  createdBy: { type: String, required: false }, //field
-
-  updatedBy: { type: String, required: false }, //field
-
-  tenantId: { type: Number, required: false }, //field
-
-  orgId: { type: Number, required: false }, //field
-
-  branchId: { type: Number, required: false }, //field
-
-  customerNo: { type: String, required: true }, //field
-
-  customerName: { type: String, required: true }, //field
-
-  customerStatus: { type: String, required: false }, //field
-
-  email: { type: String, required: false }, //field
-
-  tel: { type: String, required: false }, //field
-
-  active: { type: Boolean, required: false }, //field
-
-  description: { type: String, required: false }, //field
-
-  docNoFormat: { type: <CustomerDocNoFormat>{}, required: false }, //object
-};
-
-export const CustomerMongoSchema = new Schema(schemasetting, {
-  collection: 'customer',
-})
-  .pre('save', function (next) {
+export const CustomerMongoSchema = new Schema(schemasetting,{collection: 'customer'})
+.pre('save', function(next) {
     this.increment();
     return next();
-  })
+})
 
-  .index({ orgId: 1, customerNo: 1 }, { unique: true })
+     
+       
+            .index({ 'orgId':1, 'customerNo': 1 }, { unique: true })
+      
+  
+  
 
-  .index({ 'docNoFormat._id': 1 });
+
+  
+          .index({'docNoFormat._id':1})
+      

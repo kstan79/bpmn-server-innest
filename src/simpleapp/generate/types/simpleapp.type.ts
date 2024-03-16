@@ -4,7 +4,8 @@
  * last change 2024-01-25
  * Author: Ks Tan
  */
-import { UserContext } from '../commons/user.context';
+import { UserContext } from '../commons/user.context'
+
 
 export type ModifiedCollection = {
   [key: string]: string[];
@@ -42,18 +43,9 @@ export type DefaultHooks<T> = {
   afterValidation?: (appuser: UserContext, data: T) => Promise<void>;
   beforeCreate?: (appuser: UserContext, data: T) => Promise<void>;
   afterCreate?: (appuser: UserContext, data: T) => Promise<void>;
-  beforeUpdate?: (
-    appuser: UserContext,
-    id: string,
-    data: T,
-    existingdata: T,
-  ) => Promise<void>;
+  beforeUpdate?: (appuser: UserContext, id: string, data: T, existingdata:T) => Promise<void>;
   afterUpdate?: (appuser: UserContext, id: string, data: T) => Promise<void>;
-  beforeDelete?: (
-    appuser: UserContext,
-    id: string,
-    deletedata: T,
-  ) => Promise<void>;
+  beforeDelete?: (appuser: UserContext, id: string,deletedata:T) => Promise<void>;
   afterDelete?: (
     appuser: UserContext,
     result: DeleteResultType<T>,

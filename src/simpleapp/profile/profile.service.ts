@@ -225,7 +225,7 @@ export class ProfileService {
     return await appuser.getAllTenants();
   }
 
-  async getSession(appuser: UserContext) {
-    return 'OK';
+  async getSession(appuser:UserContext){
+    return 'OK'
   }
 }

@@ -18,16 +18,22 @@ import { UserContext } from '../generate/commons/user.context';
 import { CustomerProcessor } from '../generate/processors/cust.processor';
 //import { Customer,CustomerHooks} from '../generate/types';
 import * as types from '../generate/types';
-export { Customer } from '../generate/types';
+export { Customer} from '../generate/types';
+
 
 @Injectable()
 export class CustomerService extends CustomerProcessor {
-  public hooks: types.CustomerHooks = {};
-  constructor(@InjectModel('Customer') mydoc: Model<types.Customer>) {
-    super(mydoc);
-  }
+     
+   
+      
+  public hooks: types.CustomerHooks = {}
+    constructor(
+        @InjectModel('Customer')  mydoc: Model<types.Customer>
+        ){
+        super(mydoc)
+    }
 
-  /***************************** begin x-document-api definitions *****************************************/
+/***************************** begin x-document-api definitions *****************************************/
 
-  /***************************** end x-document-api definitions *****************************************/
+/***************************** end x-document-api definitions *****************************************/
 }

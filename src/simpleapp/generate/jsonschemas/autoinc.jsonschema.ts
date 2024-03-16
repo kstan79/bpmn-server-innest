@@ -4,36 +4,4 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-export const AutoincreamentJsonSchema = {
-  type: 'object',
-  'x-simpleapp-config': {
-    documentType: 'autoinc',
-    documentName: 'autoincreament',
-    isolationType: 'none',
-    pageType: 'crud',
-    additionalApis: [
-      {
-        action: 'generateNextNo',
-        entryPoint: 'gennextno/:collection/:field',
-        requiredRole: ['User'],
-        method: 'get',
-        description: 'Get next no and trigger increase nextno',
-      },
-    ],
-    foreignKeys: {},
-  },
-  required: ['nextNo', 'collectionName', 'fieldName'],
-  properties: {
-    _id: { type: 'string', format: 'uuid' },
-    created: { type: 'string' },
-    updated: { type: 'string' },
-    createdBy: { type: 'string' },
-    updatedBy: { type: 'string' },
-    tenantId: { type: 'integer', default: 1, minimum: 0 },
-    orgId: { type: 'integer', default: 1, minimum: 0 },
-    branchId: { type: 'integer', default: 1, minimum: 0 },
-    collectionName: { type: 'string', minLength: 1 },
-    fieldName: { type: 'string', minLength: 1 },
-    nextNo: { type: 'integer', minimum: 1 },
-  },
-};
+export const AutoincreamentJsonSchema = {"type":"object","x-simpleapp-config":{"documentType":"autoinc","documentName":"autoincreament","isolationType":"none","pageType":"crud","additionalApis":[{"action":"generateNextNo","entryPoint":"gennextno/:collection/:field","requiredRole":["User"],"method":"get","description":"Get next no and trigger increase nextno"}],"foreignKeys":{}},"required":["nextNo","collectionName","fieldName"],"properties":{"_id":{"type":"string","format":"uuid"},"created":{"type":"string"},"updated":{"type":"string"},"createdBy":{"type":"string"},"updatedBy":{"type":"string"},"tenantId":{"type":"integer","default":1,"minimum":0},"orgId":{"type":"integer","default":1,"minimum":0},"branchId":{"type":"integer","default":1,"minimum":0},"collectionName":{"type":"string","minLength":1},"fieldName":{"type":"string","minLength":1},"nextNo":{"type":"integer","minimum":1}}}

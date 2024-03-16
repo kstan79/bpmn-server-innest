@@ -8,7 +8,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { DocnoformatProcessor } from '../generate/processors/docno.processor';
-import { Docnoformat, DocnoformatHooks } from '../generate/types';
+import { Docnoformat,DocnoformatHooks } from '../generate/types';
 import { UserContext } from '../generate/commons/user.context';
 import * as moment from 'moment';
 import { DocNumberFormatGenerator } from '../generate/commons/docnogenerator.service';
@@ -18,7 +18,9 @@ export { Docnoformat } from '../generate/types';
 export class DocnoformatService extends DocnoformatProcessor {
   protected strictIsolation = false;
   hooks: DocnoformatHooks = {};
-  constructor(@InjectModel('Docnoformat') mydoc: Model<Docnoformat>) {
+  constructor(
+    @InjectModel('Docnoformat') mydoc: Model<Docnoformat>,
+  ) {
     super(mydoc);
   }
 
@@ -32,9 +34,9 @@ export class DocnoformatService extends DocnoformatProcessor {
     doctype = doctype.toUpperCase();
     const searchresult = await this.search(
       appuser,
-      { docNoType: doctype, 'branch.branchId': appuser.getBranchId() },
-      undefined,
-      { default: 'desc' },
+     { docNoType: doctype,'branch.branchId':appuser.getBranchId() },
+     undefined,
+     {default:'desc'}
     );
     //console.log('searchresult',searchresult);
     let data: any = [];

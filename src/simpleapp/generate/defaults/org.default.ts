@@ -5,41 +5,86 @@
  * Author: Ks Tan
  */
 
-export const DefaultOrganization = (uuid: string) => {
-  // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":false,"default":1},"orgId":{"type":"number","required":true,"default":1},"branchId":{"type":"number","required":false,"default":1},"orgCode":{"type":"string","required":true,"default":""},"orgName":{"type":"string","required":true,"default":""},"active":{"type":"boolean","required":false,"default":true},"description":{"type":"string","required":false,"format":"text","default":""},"timeZone":{"type":"string","required":false,"examples":["Asia/Kuala_Lumpur"],"default":""},"offsetMinute":{"type":"number","required":false,"default":0},"currency":{"type":"string","required":false,"default":""},"country":{"type":"string","required":false,"default":""}}
-  return {
-    _id: uuid,
-
-    // skip cause already hardcoded
-
-    created: '',
-
-    updated: '',
-
-    createdBy: '',
-
-    updatedBy: '',
-
-    tenantId: 0, //it will override by save handle
-
-    orgId: 0, //it will override by save handle
-
-    branchId: 0, //it will override by save handle
-
-    orgCode: '',
-
-    orgName: '',
-
-    active: true,
-
-    description: '',
-
-    timeZone: '',
-
-    offsetMinute: 0,
-
-    currency: '',
-
-    country: '',
-  };
-};
+    
+export const DefaultOrganization = (uuid:string)=>{
+    // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":false,"default":1},"orgId":{"type":"number","required":true,"default":1},"branchId":{"type":"number","required":false,"default":1},"orgCode":{"type":"string","required":true,"default":""},"orgName":{"type":"string","required":true,"default":""},"active":{"type":"boolean","required":false,"default":true},"description":{"type":"string","required":false,"format":"text","default":""},"timeZone":{"type":"string","required":false,"examples":["Asia/Kuala_Lumpur"],"default":""},"offsetMinute":{"type":"number","required":false,"default":0},"currency":{"type":"string","required":false,"default":""},"country":{"type":"string","required":false,"default":""}}        
+        return {
+        _id : uuid,
+              
+                          
+            
+                    // skip cause already hardcoded
+                        
+                          
+            
+           
+            created : '',
+                        
+                          
+            
+           
+            updated : '',
+                        
+                          
+            
+           
+            createdBy : '',
+                        
+                          
+            
+           
+            updatedBy : '',
+                        
+                          
+            
+                      tenantId : 0,//it will override by save handle
+                        
+                          
+            
+                      orgId : 0, //it will override by save handle
+                        
+                          
+            
+                      branchId : 0,  //it will override by save handle
+                        
+                          
+            
+           
+            orgCode : '',
+                        
+                          
+            
+           
+            orgName : '',
+                        
+                          
+            
+           
+            active : true,
+                        
+                          
+            
+           
+            description : '',
+                        
+                          
+            
+           
+            timeZone : '',
+                        
+                          
+            
+           
+            offsetMinute : 0,
+                        
+                          
+            
+           
+            currency : '',
+                        
+                          
+            
+           
+            country : '',
+                      }
+  } 

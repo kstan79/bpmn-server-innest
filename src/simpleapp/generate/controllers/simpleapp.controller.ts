@@ -58,7 +58,7 @@ export class SimpleAppAbstractController<
       searchObject['sorts'],
     );
   }
-  async _autocomplete(appuser: UserContext, keyword: string, data?: T) {
+  async _autocomplete(appuser: UserContext, keyword:string,data?:T) {
     return this.service.getAutoComplete(appuser, keyword, data);
   }
   async _findOne(appuser: UserContext, id: string) {

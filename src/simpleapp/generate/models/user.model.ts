@@ -5,41 +5,65 @@
  * Author: Ks Tan
  */
 import { Schema } from 'mongoose';
-import { User } from '../types/user.type';
+import {  User,  }  from '../types/user.type';
 const schemasetting = {
-  _id: { type: 'string', required: true }, //force _id as string
+  
+      
+    
+          _id: {type:'string', required:true},  //force _id as string
+          
+    
+          created: {type: String, required: false},  //field 
+          
+    
+          updated: {type: String, required: false},  //field 
+          
+    
+          createdBy: {type: String, required: false},  //field 
+          
+    
+          updatedBy: {type: String, required: false},  //field 
+          
+    
+          tenantId: {type: Number, required: false},  //field 
+          
+    
+          orgId: {type: Number, required: false},  //field 
+          
+    
+          branchId: {type: Number, required: false},  //field 
+          
+    
+          uid: {type: String, required: false},  //field 
+          
+    
+          fullName: {type: String, required: true},  //field 
+          
+    
+          email: {type: String, required: true},  //field 
+          
+    
+          active: {type: Boolean, required: false},  //field 
+          
+    
+          description: {type: String, required: false},  //field 
+          
+    
+          lastActivity: {type: String, required: false},  //field 
+      };
 
-  created: { type: String, required: false }, //field
-
-  updated: { type: String, required: false }, //field
-
-  createdBy: { type: String, required: false }, //field
-
-  updatedBy: { type: String, required: false }, //field
-
-  tenantId: { type: Number, required: false }, //field
-
-  orgId: { type: Number, required: false }, //field
-
-  branchId: { type: Number, required: false }, //field
-
-  uid: { type: String, required: false }, //field
-
-  fullName: { type: String, required: true }, //field
-
-  email: { type: String, required: true }, //field
-
-  active: { type: Boolean, required: false }, //field
-
-  description: { type: String, required: false }, //field
-
-  lastActivity: { type: String, required: false }, //field
-};
-
-export const UserMongoSchema = new Schema(schemasetting, { collection: 'user' })
-  .pre('save', function (next) {
+export const UserMongoSchema = new Schema(schemasetting,{collection: 'user'})
+.pre('save', function(next) {
     this.increment();
     return next();
-  })
+})
 
-  .index({ tenantId: 1, email: 1 }, { unique: true });
+     
+       
+            .index({ 'tenantId':1, 'email': 1 }, { unique: true })
+      
+  
+  
+
+
+  

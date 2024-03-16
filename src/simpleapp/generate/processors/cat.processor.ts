@@ -4,35 +4,41 @@
  * last change 2024-02-23
  * Author: Ks Tan
  */
-import { UserContext } from '../commons/user.context';
-import * as sharelibs from '../sharelibs';
+import { UserContext } from '../commons/user.context'
+import * as sharelibs from '../sharelibs'
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import * as jsonpath from 'jsonpath';
+import * as jsonpath from 'jsonpath'
 import { Model } from 'mongoose';
-import { CategoryJsonSchema } from '../jsonschemas/cat.jsonschema';
+import {CategoryJsonSchema } from '../jsonschemas/cat.jsonschema'
 import { SimpleAppService } from './simpleapp.processor';
 import { IsolationType } from '../types';
-import { DocNumberFormatGenerator } from '../commons/docnogenerator.service';
-import { Category } from '../types/cat.type';
-import { DefaultCategory } from '../defaults/cat.default';
+import {DocNumberFormatGenerator} from '../commons/docnogenerator.service'
+import {  Category,  }  from '../types/cat.type';
+import {   DefaultCategory,   } from '../defaults/cat.default'
+
+
 
 @Injectable()
-export class CategoryProcessor extends SimpleAppService<Category> {
-  protected documentIdentityCode = 'categoryCode';
-  protected documentIdentityLabel = 'categoryName';
-
-  protected foreignkeys = {};
-  constructor(mydoc: Model<Category>) {
-    super('CAT', 'category', mydoc, IsolationType.org);
-    this.setSchema(CategoryJsonSchema);
-    this.setData(DefaultCategory(crypto.randomUUID()));
+export class CategoryProcessor extends SimpleAppService<Category>  {
+  protected documentIdentityCode='categoryCode'
+  protected documentIdentityLabel='categoryName'
+  
+  protected foreignkeys = {}
+    constructor(mydoc: Model<Category>) {
+    super('CAT','category',mydoc,IsolationType.org);
+    this.setSchema(CategoryJsonSchema)
+    this.setData(DefaultCategory(crypto.randomUUID()))
+        }
+   
+   reCalculateValue(data:Category){
+    //console.log('trigger new recalculate')    
+    const jsopbj= new jsonpath['JSONPath']()
+        
   }
 
-  reCalculateValue(data: Category) {
-    //console.log('trigger new recalculate')
-    const jsopbj = new jsonpath['JSONPath']();
-  }
 
   /***************************** additional execute *****************************************/
+    
+
 }

@@ -5,37 +5,55 @@
  * Author: Ks Tan
  */
 import { Schema } from 'mongoose';
-import { Permission } from '../types/perm.type';
+import {  Permission,  }  from '../types/perm.type';
 const schemasetting = {
-  _id: { type: 'string', required: true }, //force _id as string
+  
+      
+    
+          _id: {type:'string', required:true},  //force _id as string
+          
+    
+          created: {type: String, required: false},  //field 
+          
+    
+          updated: {type: String, required: false},  //field 
+          
+    
+          createdBy: {type: String, required: false},  //field 
+          
+    
+          updatedBy: {type: String, required: false},  //field 
+          
+    
+          tenantId: {type: Number, required: false},  //field 
+          
+    
+          orgId: {type: Number, required: false},  //field 
+          
+    
+          branchId: {type: Number, required: false},  //field 
+          
+    
+          groups: [{type: <string>{}, required:false}],  //custom array
+          
+    
+          uid: {type: String, required: false},  //field 
+          
+    
+          userId: {type: String, required: false},  //field 
+      };
 
-  created: { type: String, required: false }, //field
-
-  updated: { type: String, required: false }, //field
-
-  createdBy: { type: String, required: false }, //field
-
-  updatedBy: { type: String, required: false }, //field
-
-  tenantId: { type: Number, required: false }, //field
-
-  orgId: { type: Number, required: false }, //field
-
-  branchId: { type: Number, required: false }, //field
-
-  groups: [{ type: <string>{}, required: false }], //custom array
-
-  uid: { type: String, required: false }, //field
-
-  userId: { type: String, required: false }, //field
-};
-
-export const PermissionMongoSchema = new Schema(schemasetting, {
-  collection: 'permission',
-})
-  .pre('save', function (next) {
+export const PermissionMongoSchema = new Schema(schemasetting,{collection: 'permission'})
+.pre('save', function(next) {
     this.increment();
     return next();
-  })
+})
 
-  .index({ userId: 1 });
+     
+  
+  
+
+
+  
+          .index({'userId':1})
+      

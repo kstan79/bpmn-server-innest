@@ -6,24 +6,22 @@
  */
 
 import { Schema } from 'mongoose';
-import { BranchOrganization, Branch } from '../types/branch.type';
-const schemasetting = {
-  _id: { type: String },
-  created: { type: String },
-  updated: { type: String },
-  duration: { type: Number },
-  createdBy: { type: String },
-  path: { type: String },
-  ip: { type: String },
-  method: { type: String },
-  headers: { type: Object },
-  data: { type: Object },
-  statusCode: { type: Number },
-  status: { type: String },
-  errMsg: { type: String },
-  errData: { type: Object },
-};
+import {  BranchOrganization,  Branch,  }  from '../types/branch.type';
+const schemasetting = {  
+          _id: {type:String},
+          created: {type: String},  
+          updated: {type: String},  
+          duration:{type: Number},
+          createdBy: {type: String},  
+          path:{type:String},
+          ip:{type:String},
+          method:{type:String},
+          headers:{type: Object},
+          data: {type: Object},
+          statusCode: {type: Number},
+          status:{type:String},
+          errMsg:{type:String},
+          errData: {type: Object},                
+      };
 
-export const ApiEventMongoSchema = new Schema(schemasetting, {
-  collection: 'apievent',
-});
+export const ApiEventMongoSchema = new Schema(schemasetting,{collection: 'apievent'})

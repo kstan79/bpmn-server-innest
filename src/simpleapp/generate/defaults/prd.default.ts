@@ -5,50 +5,95 @@
  * Author: Ks Tan
  */
 
-export const DefaultProductCategory = (uuid: string) => {
-  // {"_id":{"type":"string","required":false,"default":""},"label":{"type":"string","required":false,"default":""}}
-  return {
-    _id: uuid,
-
-    // skip cause already hardcoded
-
-    label: '',
-  };
-};
-
-export const DefaultProduct = (uuid: string) => {
-  // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":false,"default":1},"orgId":{"type":"number","required":false,"default":1},"branchId":{"type":"number","required":false,"default":1},"productCode":{"type":"string","required":false,"examples":["BK-MTHP1"],"default":""},"productName":{"type":"string","required":false,"examples":["Math Primary 1 Book"],"default":""},"defaultPrice":{"type":"number","required":false,"default":0},"active":{"type":"boolean","required":false,"default":true},"description":{"type":"string","required":false,"default":""},"tags":["string"],"category":"ProductCategory"}
-  return {
-    _id: uuid,
-
-    // skip cause already hardcoded
-
-    created: '',
-
-    updated: '',
-
-    createdBy: '',
-
-    updatedBy: '',
-
-    tenantId: 0, //it will override by save handle
-
-    orgId: 0, //it will override by save handle
-
-    branchId: 0, //it will override by save handle
-
-    productCode: '',
-
-    productName: '',
-
-    defaultPrice: 0,
-
-    active: true,
-
-    description: '',
-
-    tags: <string[]>[], //typeof field == array     ["string"]
-
-    category: DefaultProductCategory(''),
-  };
-};
+    
+export const DefaultProductCategory = (uuid:string)=>{
+    // {"_id":{"type":"string","required":false,"default":""},"label":{"type":"string","required":false,"default":""}}        
+        return {
+        _id : uuid,
+              
+                          
+            
+                    // skip cause already hardcoded
+                        
+                          
+            
+           
+            label : '',
+                      }
+  } 
+    
+export const DefaultProduct = (uuid:string)=>{
+    // {"_id":{"type":"string","required":false,"format":"uuid","default":""},"created":{"type":"string","required":false,"default":""},"updated":{"type":"string","required":false,"default":""},"createdBy":{"type":"string","required":false,"default":""},"updatedBy":{"type":"string","required":false,"default":""},"tenantId":{"type":"number","required":false,"default":1},"orgId":{"type":"number","required":false,"default":1},"branchId":{"type":"number","required":false,"default":1},"productCode":{"type":"string","required":false,"examples":["BK-MTHP1"],"default":""},"productName":{"type":"string","required":false,"examples":["Math Primary 1 Book"],"default":""},"defaultPrice":{"type":"number","required":false,"default":0},"active":{"type":"boolean","required":false,"default":true},"description":{"type":"string","required":false,"default":""},"tags":["string"],"category":"ProductCategory"}        
+        return {
+        _id : uuid,
+              
+                          
+            
+                    // skip cause already hardcoded
+                        
+                          
+            
+           
+            created : '',
+                        
+                          
+            
+           
+            updated : '',
+                        
+                          
+            
+           
+            createdBy : '',
+                        
+                          
+            
+           
+            updatedBy : '',
+                        
+                          
+            
+                      tenantId : 0,//it will override by save handle
+                        
+                          
+            
+                      orgId : 0, //it will override by save handle
+                        
+                          
+            
+                      branchId : 0,  //it will override by save handle
+                        
+                          
+            
+           
+            productCode : '',
+                        
+                          
+            
+           
+            productName : '',
+                        
+                          
+            
+           
+            defaultPrice : 0,
+                        
+                          
+            
+           
+            active : true,
+                        
+                          
+            
+           
+            description : '',
+                        
+                          
+            
+                        tags : <string[]>[],  //typeof field == array     ["string"]    
+                          
+                          
+            
+                      category :  DefaultProductCategory(''),
+                      }
+  } 
