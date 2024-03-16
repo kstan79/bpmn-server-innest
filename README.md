@@ -1,6 +1,9 @@
-# how to use
+# Environment
+1. mongodb cluster (docker)
+2. nodejs 20+
+3. nestjs (https://docs.nestjs.com)
 
-setup project
+# setup project
 1. setup mongodb cluster with docker
 ```bash
 #create network
