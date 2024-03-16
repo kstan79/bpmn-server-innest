@@ -46,10 +46,13 @@ docker exec -it mongo1 mongosh --eval "rs.status()"
 ```
 127.0.0.1 mongo1 mongo2 mongo3
 ````
-3. 
+3. git clone and start project
 ```bash
- pnpm run start:dev # leave console open
- # if port crash, try change .env
+git clone https://github.com/kstan79/bpmn-server-innest.git
+cd bpmn-server-innest
+pnpm install 
+pnpm run start:dev # leave console open
+# if port crash, try change .env
 ```
 4. browse to http://localhost:8000/api#/CAT/runCreate
 5. try create below data via `post /cat`:
