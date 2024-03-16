@@ -65,16 +65,19 @@ pnpm run start:dev # leave console open
   "description": ""
 }
 ```
-6. you change categoryCode if you try multiple submit to avoid uniquekey crash (remain categoryType unchange)
+6. you may change `categoryCode` avoid uniquekey crash (remain categoryType unchange)
 
 
 # Elaborate Issue
-1. monitor console will see alot of logs, when submit create api
-2. you will notice workflow init via hook `beforeCreate` src/simpleapp/services/cat.service.ts
-3. the startWorkflow will send an event to `event2` package at nestjs framework, then trigger workflow service "startWorkflow()" at `src/simpleapp/generate/workflow/workflow.service.ts`
-4. the bpmnserver instance initiated at `constructor` from `src/simpleapp/generate/workflow/workflow.service.ts`
+1. during execute create category api, console appear alot of logs
+2. work service start, it show mongodb connection string which is sensitive
+
+# Code Tracking
+1. workflow init via hook category `beforeCreate`, store at `src/simpleapp/services/cat.service.ts`
+3. the startWorkflow execute `event2` at nestjs framework, then it trigger workflow service `startWorkflow()` at `src/simpleapp/generate/workflow/workflow.service.ts`
+4. the bpmnserver instance initiated at `constructor`, in `src/simpleapp/generate/workflow/workflow.service.ts`
 5. the config of bpmn at `workflow.config.ts` in same folder
-6. I can't proceed further to hide the logs
+6. I can't hide logs at constructor in `workflow.service.ts`.
 
 ** if u feel interested on where is the bpmn and executor, you may check:
   `src/simpleapp/workflows/bpmn` and `src/simpleapp/workflows/listeners`
