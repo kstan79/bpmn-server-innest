@@ -54,7 +54,7 @@ pnpm install
 pnpm run start:dev # leave console open
 # if port crash, try change .env
 ```
-4. browse to http://localhost:8000/api#/CAT/runCreate
+4. browse to http://localhost:8000/api#/CAT/runCreate, authorize using xorg: "MC0wLTA", oauth2 empty
 5. try create below data via `post /cat`:
 ```
 {
