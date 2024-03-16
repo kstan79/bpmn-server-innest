@@ -1,7 +1,13 @@
+# introduction
+this is an dummy repository for `bpmn-server` developer test the implementation in nestjs
+
 # Environment
 1. mongodb cluster (docker)
 2. nodejs 20+
 3. nestjs (https://docs.nestjs.com)
+
+Follow next step to run the environment
+
 
 # setup project
 1. setup mongodb cluster with docker
@@ -40,8 +46,10 @@ docker exec -it mongo1 mongosh --eval "rs.status()"
 ```
 127.0.0.1 mongo1 mongo2 mongo3
 ````
-3. ```
+3. 
+```bash
  pnpm run start:dev # leave console open
+ # if port crash, try change .env
 ```
 4. browse to http://localhost:8000/api#/CAT/runCreate
 5. try create below data via `post /cat`:
